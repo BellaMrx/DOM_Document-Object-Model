@@ -47,7 +47,7 @@ The `document` object is the topmost object of the DOM tree, only with it it is 
 DOM provides various methods and properties for each object in the DOM tree. 
 
 Example:
-  [Complete Code](https:) --> **Examples/Part_1/...** 
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_1) --> **Examples/Part_1/...** 
 
 index.html:
    ```
