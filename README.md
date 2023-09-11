@@ -20,7 +20,7 @@ The HTML elements of a document are composed into a hierarchical tree structure.
 
  ![Preview](images/DOM_Tree.png)
 
-All individual elements of this family tree are **nodes** and are related to each other. E.g. the `head` - element (**parent element**) has two **child elements**, the `title` and the `meta` -element. The `title` and the `meta` element are also called **siblings** here. The same applies to the `body` element. 
+All individual elements of this family tree are **nodes** and are related to each other. E.g. the `head` -element (**parent element**) has two **child elements**, the `title` and the `meta` -element. The `title` and the `meta` -element are also called **siblings** here. The same applies to the `body` element. 
 
 The HTML attributes and the contents of the HTML elements are also nodes of a DOM tree.
 
