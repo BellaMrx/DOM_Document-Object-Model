@@ -13,7 +13,7 @@
  5. 
 ---------------------------------------------
 
-# 1. Introduction to the DOM of an HTML document
+## 1. Introduction to the DOM of an HTML document
 With the DOM, you have access to all HTML elements of the document using JavaScript. This allows you to manipulate all HTML elements, HTML attributes, and CSS styles of a web page. Additionally, it is possible to add new HTML elements or attributes or remove existing ones, as well as react to all HTML events of a web page. 
 
 The HTML elements of a document are composed into a hierarchical tree structure.
@@ -35,7 +35,7 @@ Here, the `p` element is the HTML element node and this contains an HTML attribu
 Thanks to the division into node objects, where all HTML HTML documents, HTML attributes and the contents of a node represent and these nodes are related to each other in the tree by **parent**, **child**, or **sibling** relationships, it is possible to access each of these nodes using various **DOM methods** and **DOM properties**.
 
 
-# 2. The `document` object
+## 2. The `document` object
 The `document` object is the topmost object of the DOM tree, only with it it is possible to access and modify all elements of the HTML document with JavaScript. It represents practically the whole web page and is the owner of all other nodes of the web page. If you want to access an element in an HTML document, this can be done e.g. with the `document` object and the `querySelector()` method.
 
    ```
@@ -43,7 +43,7 @@ The `document` object is the topmost object of the DOM tree, only with it it is 
    ```
 
 
-# 3. The DOM programming interface
+## 3. The DOM programming interface
 DOM provides various methods and properties for each object in the DOM tree. 
 
 Example:
@@ -76,7 +76,7 @@ Output:
 Here, `querySelector()` is a method and `innerHTML` is a property of the `document` object. The `querySelector()` method is used to get access to an HTML element. The `innerHTML` property can be used to read the content of the HTML document or replace it with new content.
 
 
-# 4. Access elements in the DOM
+## 4. Access elements in the DOM
 A very common use of JavaScript is to read, modify or extend elements in the DOM. For such accesses to the DOM and its element nodes, the `document` object provides several methods:
 
 | Method             					 | Description                                         |
@@ -91,4 +91,68 @@ A very common use of JavaScript is to read, modify or extend elements in the DOM
 In practice, the two somewhat newer methods `querySelector()` and `querySelectorAll()` are sufficient because they can be used to search for the usual CSS selectors such as elements, classes and IDs, and other attributes.
 
 
-## Find an HTML element with a specific `id` attribute
+### Find an HTML element with a specific `id` attribute
+The `document.getElementById()` method is used to search for a specific `id` attribute of an element. This method returns a reference to the element object if successful or `null` if no element with this `id` attribute exists.
+
+Example:
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_2) --> **Examples/Part_2/...** 
+
+index.html:
+   ```
+   <body>
+      <h1>The DOM interface</h1>
+      <p id="message">The paragraph text</p>
+      <script src="scripts/script.js"></script>
+   </body>
+   ```
+
+script.js:
+   ```
+   "use strict";
+
+   let element = document.getElementById('message');
+   if (element) {
+      let text = element.innerHTML;
+      text += " " + "has been extended!";
+      element.innerHTML = text;
+   } else {
+      console.log("Element with ID message was not found!");
+   }
+   ```
+
+Output:
+
+ ![Preview](images/DOM-Interface.png)
+
+
+Another example with `querySelector()`:
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_3) --> **Examples/Part_3/...** 
+
+index.html:
+   ```
+   <body>
+      <h1>The DOM interface</h1>
+      <p id="message">The paragraph text</p>
+      <script src="scripts/script.js"></script>
+   </body>
+   ```
+
+script.js:
+   ```
+   "use strict";
+
+   let element = document.getElementById('message');
+   if (element) {
+      let text = element.innerHTML;
+      text += " " + "has been extended!";
+      element.innerHTML = text;
+   } else {
+      console.log("Element with ID message was not found!");
+   }
+   ```
+
+Output:
+
+ ![Preview](images/DOM-Interface.png)
+
+The method with `querySelector('#message')` corresponds to the one with `getElementById('message')`.
