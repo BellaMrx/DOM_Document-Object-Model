@@ -9,7 +9,7 @@
  1. Introduction to the DOM of an HTML document
  2. the `document` object
  3. The DOM programming interface 
- 4.  
+ 4. Access elements in the DOM  
  5. 
 ---------------------------------------------
 
@@ -72,3 +72,23 @@ script.js:
 Output:
 
  ![Preview](images/DOM-Interface.png)
+
+Here, `querySelector()` is a method and `innerHTML` is a property of the `document` object. The `querySelector()` method is used to get access to an HTML element. The `innerHTML` property can be used to read the content of the HTML document or replace it with new content.
+
+
+# 4. Access elements in the DOM
+A very common use of JavaScript is to read, modify or extend elements in the DOM. For such accesses to the DOM and its element nodes, the `document` object provides several methods:
+
+| Method             					 | Description                                         |
+|----------------------------------- | ----------------------------------------------------|
+| `document.getElementById()`   	    | Finds the element by the `id` attribute             |
+| `document.getElementsByTagName()`  | Finds all elements with a specific tag name         |
+| `document.getElementsByClassName()`| Finds all elements of a given CSS class             |
+| `document.getElementsByName()`     | Finds all elements with a given `name` attribute    |
+| `document.querySelector(x)`        | Returns the first element that corresponds to the specified CSS selector `x` |
+| `document.querySelectorAll(x)`     | Returns a list with all elements that match the specified CSS selector `x` |
+
+In practice, the two somewhat newer methods `querySelector()` and `querySelectorAll()` are sufficient because they can be used to search for the usual CSS selectors such as elements, classes and IDs, and other attributes.
+
+
+## Find an HTML element with a specific `id` attribute
