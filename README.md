@@ -155,4 +155,4 @@ Output:
 
  ![Preview](images/DOM-Interface.png)
 
-The method with `querySelector('#message')` corresponds to the one with `getElementById('message')`.
+The method with `querySelector('#message')` is equal to the one with `getElementById('message')`.
