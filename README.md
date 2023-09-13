@@ -304,3 +304,89 @@ Output:
 
  ![Preview](images/DOM-Interface3.png)
 
+With the statement `let colors = document.getElementsByName('color');` in the function `getColor()` all nodes are found where `name="color"` is noted and stored in `colors`. The `if` conditions `(colors[i].checked)` are used to check whether the radio button was checked (= `true`) or not checked (= `false`).
+The **event handler** `onclick` will execute the `getColor()` event function when the element is clicked.
+
+Another example with `querySelector()` and `querySelectorAll()`:
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_7) --> **Examples/Part_7/...** 
+
+index.html:
+   ```
+    <body>
+      <input name="color" type="radio" value="red">Red
+      <input name="color" type="radio" value="green">Green
+      <input type="button" onclick="getColor()" value="Select color">
+      <br>
+      <output></output>
+      <script src="scripts/script.js"></script>
+    </body>
+   ```
+
+script.js:
+   ```
+    function getColor() {
+      var colors = document.querySelectorAll('[name="color"]');
+      let htmlText = "Colors to choose : " + colors.length +
+        "<br>You have chosen  :";
+      if (colors[0].checked) {
+        htmlText += "Red";
+      } else if (colors[1].checked) {
+        htmlText += "Green";
+      } else {
+        htmlText += "None";
+      }
+      document.querySelector('output').innerHTML = htmlText;
+    }
+   ```
+
+Output:
+
+ ![Preview](images/DOM-Interface3.png)
+
+
+### Use `querySelector()` and `querySelectorAll()`
+In practice these two methods are more flexible and faster than the `getElementById()` and `getElementsByTagName()` methods. The `querySelector()` method returns the first element found, and `querySelectorAll()` returns a list of all found elements in a **NodeList**.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_8) --> **Examples/Part_8/...** 
+
+index.html:
+   ```
+    <body>
+      <article>
+        <h2>Article Heading 1</h2>
+        <p>The 1st paragraph text</p>
+      </article>
+      <article>
+        <h2>Article Heading 2</h2>
+        <p>The 2nd paragraph text</p>
+      </article>
+      <article>
+        <h2>Article Heading 3</h2>
+        <p>The 3rd paragraph text</p>
+      </article>
+      <article>
+        <h2>Article Heading 4</h2>
+        <p>The 4th paragraph text</p>
+      </article>
+      <h2>Heading 5 (no article)</h2>
+      <p>The 5th paragraph text</p>
+      <script src="scripts/script.js"></script>
+    </body>
+   ```
+
+script.js:
+   ```
+    let element = document.querySelectorAll('article:nth-child(odd)');
+    for (let i = 0; i < element.length; i++) {
+      element[i].style.backgroundColor = "lavender";
+    } 
+   ```
+
+Output:
+
+ ![Preview](images/DOM-Interface4.png)
+
+Here, each `article` element has been styled with a background color if it is an odd element `(nth-child(odd))` from the parent element. If all even elements are to be styled, `(nth-child(even))` is used.
+
+
+
