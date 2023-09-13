@@ -156,3 +156,95 @@ Output:
  ![Preview](images/DOM-Interface.png)
 
 The method with `querySelector('#message')` is equal to the one with `getElementById('message')`.
+
+
+### Search HTML elements with a specific tag name
+If you want to search for HTML elements with a specific tag name, you can use the `getElementsByTagName` method. This method is useful if you want to return a collection of all nodes with a corresponding tag name. The individual nodes can be accessed with the square brackets `[]` and the corresponding index value. The number of elements is returned by the `length` property.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_4) --> **Examples/Part_4/...** 
+
+index.html:
+   ```
+   <body>
+      <article id="lead">
+         <h1>The DOM interface</h1>
+         <p>First paragraph text in the article</p>
+         <p>Second paragraph text in the article</p>                                    
+      </article>
+      <p>First paragraph text outside the article</p>
+      <p>Second paragraph text outside the article</p>
+      <h2>Output:</h2>
+      <output></output>
+      <script src="scripts/script.js"></script>
+   </body>
+   ```
+
+script.js:
+   ```
+   let plainText = "";
+   let pElements = document.getElementsByTagName('p');
+   for (let i = 0; i < pElements.length; i++) {
+      plainText += pElements[i].innerHTML + '\n';
+   }
+   console.log(plainText);     // output for demonstration
+
+   let htmlText = "p elements in the document: " + pElements.length + "<br>";
+   let articleElements = document.getElementById('lead');
+   let articlePElements;
+   if (articleElements) {
+      articlePElements = articleElements.getElementsByTagName('p');
+      htmlText += "Of which is contained in the article element: " + articlePElements.length + "<br>";
+   }
+
+   htmlText += "The second paragraph in the article reads: " + articlePElements[1].innerHTML;
+
+   document.querySelector('output').innerHTML = htmlText;
+   ```
+
+Output:
+
+ ![Preview](images/DOM-Interface2.png)
+
+
+Another example with `querySelectorAll()`:
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_5) --> **Examples/Part_5/...** 
+
+index.html:
+   ```
+   <body>
+      <article id="lead">
+         <h1>The DOM interface</h1>
+         <p>First paragraph text in the article</p>
+         <p>Second paragraph text in the article</p>                                    
+      </article>
+      <p>First paragraph text outside the article</p>
+      <p>Second paragraph text outside the article</p>
+      <h2>Output:</h2>
+      <output></output>
+      <script src="scripts/script.js"></script>
+   </body>
+   ```
+
+script.js:
+   ```
+   let plainText = "";
+   let pElements = document.getElementsByTagName('p');
+   for (let i = 0; i < pElements.length; i++) {
+      plainText += pElements[i].innerHTML + '\n';
+   }
+   console.log(plainText);     // output for demonstration
+
+   let htmlText = "p elements in the document: " + pElements.length + "<br>";
+   let articlePElements = document.querySelectorAll('#lead p');
+   if (articlePElements) {
+      htmlText += "Of which is contained in the article element: " + articlePElements.length + "<br>";
+   }
+
+   htmlText += "The second paragraph in the article reads: " + articlePElements[1].innerHTML;
+
+   document.querySelector('output').innerHTML = htmlText;
+   ```
+
+Output:
+
+ ![Preview](images/DOM-Interface2.png)
