@@ -51,22 +51,22 @@ Example:
 
 index.html:
    ```
-   <body>
+    <body>
       <h1>The DOM interface</h1>
       <p>The paragraph text</p>
       <script src="scripts/script.js"></script>
-   </body>
+    </body>
    ```
 
 script.js:
    ```
-   "use strict";
+    "use strict";
 
-   let text = document.querySelector('p').innerHTML;
-   if (text) {
+    let text = document.querySelector('p').innerHTML;
+    if (text) {
       text += " " + "has been extended!";
       document.querySelector('p').innerHTML = text;
-   }
+    }
    ```
 
 Output:
@@ -99,25 +99,25 @@ Example:
 
 index.html:
    ```
-   <body>
+    <body>
       <h1>The DOM interface</h1>
       <p id="message">The paragraph text</p>
       <script src="scripts/script.js"></script>
-   </body>
+    </body>
    ```
 
 script.js:
    ```
-   "use strict";
+    "use strict";
 
-   let element = document.getElementById('message');
-   if (element) {
+    let element = document.getElementById('message');
+    if (element) {
       let text = element.innerHTML;
       text += " " + "has been extended!";
       element.innerHTML = text;
-   } else {
+    } else {
       console.log("Element with ID message was not found!");
-   }
+    }
    ```
 
 Output:
@@ -130,25 +130,25 @@ Another example with `querySelector()`:
 
 index.html:
    ```
-   <body>
+    <body>
       <h1>The DOM interface</h1>
       <p id="message">The paragraph text</p>
       <script src="scripts/script.js"></script>
-   </body>
+    </body>
    ```
 
 script.js:
    ```
-   "use strict";
+    "use strict";
 
-   let element = document.getElementById('message');
-   if (element) {
+    let element = document.getElementById('message');
+    if (element) {
       let text = element.innerHTML;
       text += " " + "has been extended!";
       element.innerHTML = text;
-   } else {
+    } else {
       console.log("Element with ID message was not found!");
-   }
+    }
    ```
 
 Output:
@@ -159,13 +159,13 @@ The method with `querySelector('#message')` is equal to the one with `getElement
 
 
 ### Search HTML elements with a specific tag name
-If you want to search for HTML elements with a specific tag name, you can use the `getElementsByTagName` method. This method is useful if you want to return a collection of all nodes with a corresponding tag name. The individual nodes can be accessed with the square brackets `[]` and the corresponding index value. The number of elements is returned by the `length` property.
+If you want to search for HTML elements with a specific tag name, you can use the `getElementsByTagName()` method. This method is useful if you want to return a collection of all nodes with a corresponding tag name. The individual nodes can be accessed with the square brackets `[]` and the corresponding index value. The number of elements is returned by the `length` property.
 
   [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_4) --> **Examples/Part_4/...** 
 
 index.html:
    ```
-   <body>
+    <body>
       <article id="lead">
          <h1>The DOM interface</h1>
          <p>First paragraph text in the article</p>
@@ -176,29 +176,29 @@ index.html:
       <h2>Output:</h2>
       <output></output>
       <script src="scripts/script.js"></script>
-   </body>
+    </body>
    ```
 
 script.js:
    ```
-   let plainText = "";
-   let pElements = document.getElementsByTagName('p');
-   for (let i = 0; i < pElements.length; i++) {
+    let plainText = "";
+    let pElements = document.getElementsByTagName('p');
+    for (let i = 0; i < pElements.length; i++) {
       plainText += pElements[i].innerHTML + '\n';
-   }
-   console.log(plainText);     // output for demonstration
+    }
+    console.log(plainText);     // output for demonstration
 
-   let htmlText = "p elements in the document: " + pElements.length + "<br>";
-   let articleElements = document.getElementById('lead');
-   let articlePElements;
-   if (articleElements) {
+    let htmlText = "p elements in the document: " + pElements.length + "<br>";
+    let articleElements = document.getElementById('lead');
+    let articlePElements;
+    if (articleElements) {
       articlePElements = articleElements.getElementsByTagName('p');
       htmlText += "Of which is contained in the article element: " + articlePElements.length + "<br>";
-   }
+    }
 
-   htmlText += "The second paragraph in the article reads: " + articlePElements[1].innerHTML;
+    htmlText += "The second paragraph in the article reads: " + articlePElements[1].innerHTML;
 
-   document.querySelector('output').innerHTML = htmlText;
+    document.querySelector('output').innerHTML = htmlText;
    ```
 
 Output:
@@ -211,7 +211,7 @@ Another example with `querySelectorAll()`:
 
 index.html:
    ```
-   <body>
+    <body>
       <article id="lead">
          <h1>The DOM interface</h1>
          <p>First paragraph text in the article</p>
@@ -222,29 +222,85 @@ index.html:
       <h2>Output:</h2>
       <output></output>
       <script src="scripts/script.js"></script>
-   </body>
+    </body>
    ```
 
 script.js:
    ```
-   let plainText = "";
-   let pElements = document.getElementsByTagName('p');
-   for (let i = 0; i < pElements.length; i++) {
+    let plainText = "";
+    let pElements = document.getElementsByTagName('p');
+    for (let i = 0; i < pElements.length; i++) {
       plainText += pElements[i].innerHTML + '\n';
-   }
-   console.log(plainText);     // output for demonstration
+    }
+    console.log(plainText);     // output for demonstration
 
-   let htmlText = "p elements in the document: " + pElements.length + "<br>";
-   let articlePElements = document.querySelectorAll('#lead p');
-   if (articlePElements) {
+    let htmlText = "p elements in the document: " + pElements.length + "<br>";
+    let articlePElements = document.querySelectorAll('#lead p');
+    if (articlePElements) {
       htmlText += "Of which is contained in the article element: " + articlePElements.length + "<br>";
-   }
+    }
 
-   htmlText += "The second paragraph in the article reads: " + articlePElements[1].innerHTML;
+    htmlText += "The second paragraph in the article reads: " + articlePElements[1].innerHTML;
 
-   document.querySelector('output').innerHTML = htmlText;
+    document.querySelector('output').innerHTML = htmlText;
    ```
 
 Output:
 
  ![Preview](images/DOM-Interface2.png)
+
+`getElementsByTagName()` does not return an array, but a **Node** list (Live NodeList) which can be read with a loop. No array typical method (e.g. `forEach()`) can be called directly on a node list.
+
+
+### Search HTML elements with a specific **class** attribute
+If you want to search for an HTML element with a specific CSS class name, you can use the `getElementsByClassName()` method.
+   ```
+    let element = document.getElementsByClassName('class');
+   ```
+
+Like `getElementsByTagName()`, this method returns all found nodes in the HTML document with the class name `class`.
+
+In the meantime, it also makes sense to use the `querySelectorAll()` method to find all CSS classes:
+   ```
+    let element = document.querySelectorAll('.class');
+   ```
+
+
+### Search HTML elements with a specific **name** attribute
+If you want to search for nodes in the HTML document that contain the HTML attribute `name` with a specific value, you can use the `getElementsByName()` method. 
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_6) --> **Examples/Part_6/...** 
+
+index.html:
+   ```
+    <body>
+      <input name="color" type="radio" value="red">Red
+      <input name="color" type="radio" value="green">Green
+      <input type="button" onclick="getColor()" value="Select color">
+      <br>
+      <output></output>
+      <script src="scripts/script.js"></script>
+    </body>
+   ```
+
+script.js:
+   ```
+    function getColor() {
+      let colors = document.getElementsByName('color');
+      let htmlText = "Colors to choose : " + colors.length +
+         "<br>You have chosen  :";
+       if (colors[0].checked) {
+         htmlText += " Red";
+      } else if (colors[1].checked) {
+         htmlText += " Green";
+      } else {
+         htmlText += "None";
+      }
+      document.querySelector('output').innerHTML = htmlText;
+    }
+   ```
+
+Output:
+
+ ![Preview](images/DOM-Interface3.png)
+
