@@ -389,4 +389,86 @@ Output:
 Here, each `article` element has been styled with a background color if it is an odd element `(nth-child(odd))` from the parent element. If all even elements are to be styled, `(nth-child(even))` is used.
 
 
+### More object and property collection
+In addition, ready-made object collections and properties are available with which HTML elements can be found.
+
+Example:
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_9) --> **Examples/Part_9/...** 
+
+index.html:
+  ```
+   <head>
+      <meta charset="utf-8">
+      <title>DOM-Interfaces</title>
+   </head>
+   <body>
+      <h1>Headline</h1>
+      <output></output>
+      <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   let analysis = document.querySelector('output');
+   if (analysis) {
+    analysis.innerHTML = "Content of the title element: " + document.title;
+   }
+  ```
+
+Output:
+
+ ![Preview](images/DOM-Interface5.png)
+
+With `document.title` the content of the `title` element can be returned.
+
+This is just a convenience compared to `getElementsByTagName()` or `querySelector()`. Instead of using `document.title` you could have written the code as follows:
+
+  ```
+   document.querySelector('title').innerHTML
+  ```
+or
+
+  ```
+   document.querySelector('title').textContent
+  ```
+
+#### `innerHTML` vs. `textContent`
+`innerHTML` returns all text, including HTML tags, contained in an element. With `textContent` only simple texts can be created as strings.
+
+The following example returns all links of the HTML document:
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_10) --> **Examples/Part_10/...** 
+
+index.html:
+  ```
+   <body>
+    <h1>Headline</h1>
+    <p>A link to <a href="https://github.com/BellaMrx">GitHub@Bella_Mrx</a></p>
+    <p>Another link to <a href="https://twitter.com/bella_mrx">Twitter@bella_mrx</a></p>
+    <output>Paragraph text</output>
+    <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   let hyperlinks = document.links;
+   let text = "";
+   for (let i = 0; i < hyperlinks.length; i++) {
+    text += i + 1 + ". Link: " + hyperlinks[i].innerHTML + "<br>";
+   }
+   document.querySelector('output').innerHTML = text;
+  ```
+  
+Output:
+
+ ![Preview](images/DOM-Interface6.png)
+
+
+#### Overview of ready-made object and property collections
+| Method | Description |
+|----------------------------------- | --------------|
+| `document.`   	 | XXX |
+
 
