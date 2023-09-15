@@ -504,3 +504,33 @@ There are several properties available to change the content of an HTML element.
 
 
 ### Modifies the content of HTML elements with `innerHTML`
+The content of HTML elements can be changed with the `innerHTML` property. All elements, except the elements without closing HTML tag e.g. `<img>`, have this property `innerHTML`.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_11) --> **Examples/Part_11/...** 
+
+index.html:
+  ```
+   <body>
+    <h1>Headline</h1>
+    <p>Paragraph text</p>
+    <button onclick="changeContent()">Modify with innerHTML</button>
+    <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   function changeContent() {
+      document.querySelector('h1').innerHTML = "New headline!";
+      let element = document.querySelector('p');
+      element.innerHTML = "<strong>New content</strong> for the paragraph text";
+   }
+  ```
+  
+Output:
+
+ ![Preview](images/DOM-Interface7.png)
+
+ ![Preview](images/DOM-Interface8.png)
+
+
