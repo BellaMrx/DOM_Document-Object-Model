@@ -10,7 +10,7 @@
  2. the `document` object
  3. The DOM programming interface 
  4. Access elements in the DOM  
- 5. 
+ 5. Change HTML element, attribute or style 
 ---------------------------------------------
 
 ## 1. Introduction to the DOM of an HTML document
@@ -467,8 +467,40 @@ Output:
 
 
 #### Overview of ready-made object and property collections
-| Method | Description |
-|----------------------------------- | --------------|
-| `document.`   	 | XXX |
+| Method                     | Description                                        |
+|--------------------------- | -------------------------------------------------- |
+| `document.baseURI`   	     | Returns the absolute base URI of the HTML document |
+| `document.body`   	       | Returns the 'body' element                         |
+| `document.cookie`   	     | Returns all cookies of the document                |
+| `document.doctype`   	     | Returns the 'doctype' of the document              |
+| `document.documentElement` | Returns the 'html' element                         |
+| `document.documentURI`   	 | Returns the URI of the document                    |
+| `document.domain`   	     | Returns the domain name from the document server   |
+| `document.domConfig`   	   | Returns the DOM configuration                      |
+| `document.embeds`   	     | Returns a list with all 'embed' elements           |
+| `document.forms`   	       | Returns a collection with all 'form' elements      |
+| `document.head`   	       | Returns the 'head' element                         |
+| `document.images`   	     | Returns a collection with all images               |
+| `document.implementation`  | Returns the DOM implementation                     |
+| `document.inputEncoding`   | Returns the character set of the document          |
+| `document.lastModfied`   	 | Returns the date and time when the document was last modified |
+| `document.links`   	       | Returns a collection of all links with the 'a' and 'area' element that contain a value in the 'href' attribute |
+| `document.readyState`   	 | Returns the loading status of the document         |
+| `document.referrer`   	   | Returns the URI of the linking document. The prerequisite is that this document was called via a link |
+| `document.scripts`   	     | Returns a list with all 'script' elements          |
+| `document.title`   	       | Returns the 'title' element                        |
+| `document.URL`   	         | Returns the complete URL of the document           |
 
 
+## 5. Change HTML element, attribute or style
+There are several properties available to change the content of an HTML element. 
+
+| Method                            | Description                                 |
+|---------------------------------- | ------------------------------------------- |
+| `element.innerHTML =`             | Changes the content of an HTML element      |
+| `elemnet.attribute =`             | Changes the value of an HTML attribute      |
+| `element.setAttribute(attr,val)`  | Also changes the value of an HTML attribute |
+| `element.style.property =`        | Changes the style of an HTML element        |
+
+
+### Modifies the content of HTML elements with `innerHTML`
