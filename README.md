@@ -72,7 +72,7 @@ script.js:
 
 Output:
 
- ![Preview](images/DOM-Interface.png)
+ <img src="images/DOM-Interface.png" width="400">
 
 Here, `querySelector()` is a method and `innerHTML` is a property of the `document` object. The `querySelector()` method is used to get access to an HTML element. The `innerHTML` property can be used to read the content of the HTML document or replace it with new content.
 
@@ -123,7 +123,7 @@ script.js:
 
 Output:
 
- ![Preview](images/DOM-Interface.png)
+ <img src="images/DOM-Interface.png" width="400">
 
 
 Another example with `querySelector()`:
@@ -154,7 +154,7 @@ script.js:
 
 Output:
 
- ![Preview](images/DOM-Interface.png)
+ <img src="images/DOM-Interface.png" width="400">
 
 The method with `querySelector('#message')` is equal to the one with `getElementById('message')`.
 
@@ -204,7 +204,7 @@ script.js:
 
 Output:
 
- ![Preview](images/DOM-Interface2.png)
+ <img src="images/DOM-Interface2.png" width="400">
 
 
 Another example with `querySelectorAll()`:
@@ -248,7 +248,7 @@ script.js:
 
 Output:
 
- ![Preview](images/DOM-Interface2.png)
+ <img src="images/DOM-Interface2.png" width="400">
 
 `getElementsByTagName()` does not return an array, but a **Node** list (Live NodeList) which can be read with a loop. No array typical method (e.g. `forEach()`) can be called directly on a node list.
 
@@ -303,7 +303,7 @@ script.js:
 
 Output:
 
- ![Preview](images/DOM-Interface3.png)
+ <img src="images/DOM-Interface3.png" width="400">
 
 With the statement `let colors = document.getElementsByName('color');` in the function `getColor()` all nodes are found where `name="color"` is noted and stored in `colors`. The `if` conditions `(colors[i].checked)` are used to check whether the radio button was checked (= `true`) or not checked (= `false`).
 The **event handler** `onclick` will execute the `getColor()` event function when the element is clicked.
@@ -342,7 +342,7 @@ script.js:
 
 Output:
 
- ![Preview](images/DOM-Interface3.png)
+ <img src="images/DOM-Interface3.png" width="400">
 
 
 ### Use `querySelector()` and `querySelectorAll()`
@@ -385,7 +385,7 @@ script.js:
 
 Output:
 
- ![Preview](images/DOM-Interface4.png)
+ <img src="images/DOM-Interface4.png" width="400">
 
 Here, each `article` element has been styled with a background color if it is an odd element `(nth-child(odd))` from the parent element. If all even elements are to be styled, `(nth-child(even))` is used.
 
@@ -419,7 +419,7 @@ script.js:
 
 Output:
 
- ![Preview](images/DOM-Interface5.png)
+ <img src="images/DOM-Interface5.png" width="400">
 
 With `document.title` the content of the `title` element can be returned.
 
@@ -464,7 +464,7 @@ script.js:
   
 Output:
 
- ![Preview](images/DOM-Interface6.png)
+ <img src="images/DOM-Interface6.png" width="400">
 
 
 #### Overview of ready-made object and property collections
@@ -542,7 +542,7 @@ script.js:
       element.textContent = "<strong>New content</strong> for the paragraph text";
    }
   ```
- ![Preview](images/DOM-Interface9.png)
+ <img src="images/DOM-Interface9.png" width="400">
 
 To prevent a **cross-site scripting attack**, HTML5 dictates that an `innerHTML` inserted `<script>` tag must not be executed. However, since it is still possible to execute JavaScript without a `<script>` element, innerHTML should not be used for strings over which you have no control.
 
@@ -582,7 +582,7 @@ script.js:
   
 Output:
 
- <img src="images/DOM-Interface10.png" width="300"> <img src="images/DOM-Interface11.png" width="300">
+ <img src="images/DOM-Interface10.png" width="400"> <img src="images/DOM-Interface11.png" width="400">
 
 Here the JavaScript function `changePicture()` is started every time the button is pressed. First we used `querySelector()` to search for an element with `class="pic"` and then assigned it to the variable `current`. The `ìf` and `else` branches only serve to allow the button to be used more than once by checking the global variable `xchange` and setting it again in the corresponding branch according to the change. With `current.src` and `current.alt` and the assignment of another image or text the actual change of the attribute takes place.
 
