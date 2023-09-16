@@ -11,6 +11,7 @@
  3. The DOM programming interface 
  4. Access elements in the DOM  
  5. Change HTML element, attribute or style 
+ 6. React to JavaScript events
 ---------------------------------------------
 
 ## 1. Introduction to the DOM of an HTML document
@@ -589,3 +590,42 @@ Here the JavaScript function `changePicture()` is started every time the button 
 
 
 ### Change the style of an HTML element
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_13) --> **Examples/Part_13/...** 
+
+index.html:
+  ```
+   <body>
+    <h1 class="headline">Change HTML style</h1>
+    <p class="p-style">A simple paragraph text ...</p>
+    <button onclick="changeColor()">Change Color</button>
+    <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   let element = document.querySelector('.p-style');
+   element.style.color = "black";
+   element.style.background = "lavender";
+   element.style.font = "1.2em Arial";
+
+   function changeColor() {
+     let headline = document.querySelector('.headline');
+     headline.style.color = "limegreen";
+     headline.style.font = "2.5em serif";
+     headline.style.fontStyle = "italic";
+   }
+  ```
+
+Output:
+
+ <img src="images/DOM-Interface12.png" width="300"> <img src="images/DOM-Interface13.png" width="300">
+
+Here the style of the `<p>` element was changed and by clicking the button the `<h1>` element was changed too. The corresponding element is changed by assigning a CSS valid value to `style.property` e.g. `headline.style.color = "limegreen";`.
+
+#### Camel Case
+In CSS `font-style` is used with hyphen. In JavaScript the hyphen is set for the minus sign, and therefore the hyphen is not used there and the first letter after the actual hyphen is written as an uppercase letter so `fontStyle`. Or instead of `border-color`(CSS) would be `borderColor` in JavaScript.
+
+
+## 6. React to JavaScript events
