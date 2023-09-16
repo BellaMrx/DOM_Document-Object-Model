@@ -583,9 +583,7 @@ script.js:
   
 Output:
 
- ![Preview](images/DOM-Interface10.png)
-
- ![Preview](images/DOM-Interface11.png)
+ <img src="images/DOM-Interface10.png" width="300"> <img src="images/DOM-Interface11.png" width="300">
 
 Here the JavaScript function `changePicture()` is started every time the button is pressed. First we used `querySelector()` to search for an element with `class="pic"` and then assigned it to the variable `current`. The `ìf` and `else` branches only serve to allow the button to be used more than once by checking the global variable `xchange` and setting it again in the corresponding branch according to the change. With `current.src` and `current.alt` and the assignment of another image or text the actual change of the attribute takes place.
 
