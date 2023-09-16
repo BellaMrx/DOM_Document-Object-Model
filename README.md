@@ -629,3 +629,19 @@ In CSS `font-style` is used with hyphen. In JavaScript the hyphen is set for the
 
 
 ## 6. React to JavaScript events
+Web pages only become truly interactive with the help of **JavaScript events**. In the web browser, an **event** is triggered when an action is performed in the document or on a specific HTML element. For example, the web browser generates an event when the web page is fully loaded, the mouse is moved, or a button is clicked. The triggered event is then queued in an event queue to ensure that an event that was triggered first is also handled first (first-in-first-out principle). An event loop continuously checks whether a new event is present in the event queue and passes the event on to the so-called **event handler**.
+
+You don't have to care about the **event types** themselves, they are already included in JavaScript and become applicable via special keywords. The number of existing events in JavaScript are pretty extensive:
+
+| Event                                                              | Description                                   |
+|------------------------------------------------------------------- | --------------------------------------------- |
+| `onload`, `onunload`, `onresize`, `onscroll`, `onerror`, `onabort` | Events of the user interface of the window    |
+| `onclick`, `ondblclick`, `onmousedown`, `onmousemove`, `onmouseover`, `onmouseout`, `onmouseup` | mouse event      |
+| `onkeypress`, `onkeydown`, `onkeyup`                               | keyboard events                               |
+| `onblur`, `onchange`, `onfocus`, `onreset`, `onselect`, `onsubmit` | form events                                   |
+| `touchstart`, `touchend`, `touchchanel`, `touchleave`, `touchmove` | touch events                                  |
+| `onplay`, `oncanplay`, `onpause`, `oncanplaythrough`, `onplaying`, `ondurationchange`, `onvolumechange`, `onended` | Events for playing video and audio |
+| `ondrag`, `ondraging`, `ondragenter`, `ondragleave`, `ondragover`, `ondragstart`, `ondrop` | drag-and-drop events  |
+| `animationstart`, `animationend`, `animationiteration`             | Animation events for CSS animatons            |
+
+
