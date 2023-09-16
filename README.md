@@ -533,4 +533,61 @@ Output:
 
  ![Preview](images/DOM-Interface8.png)
 
+Here not only a text was transferred with `innerHTML`, but also a HTML tag `<strong>`, that is the advantage of `innerHTML`. Instead of `innerHTML` one could have used `textContent`, but then the HTML tag would have no effect, because the HTML tag is interpreted as a string.
 
+script.js:
+  ```
+   function changeContent() {
+      document.querySelector('h1').innerHTML = "New headline!";
+      let element = document.querySelector('p');
+      element.textContent = "<strong>New content</strong> for the paragraph text";
+   }
+  ```
+ ![Preview](images/DOM-Interface9.png)
+
+To prevent a **cross-site scripting attack**, HTML5 dictates that an `innerHTML` inserted `<script>` tag must not be executed. However, since it is still possible to execute JavaScript without a `<script>` element, innerHTML should not be used for strings over which you have no control.
+
+
+### Change the value of an HTML attribute
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_12) --> **Examples/Part_12/...** 
+
+index.html:
+  ```
+   <body>
+    <h1>Change image</h1>
+    <p><img class="pic" src="images/flower_480.jpg" alt="Pic-1"></p>
+    <button onclick="changePicture()">Change image</button>
+    <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   let xchange = true;
+
+   function changePicture() {
+    let current = document.querySelector('.pic');
+
+    if (xchange) {
+        current.src = "images/flower_480.jpg";
+        current.alt = "Flowers";
+        xchange = false;
+      } else {
+        current.src = "images/whale_480.jpg";
+        current.alt = "Whale";
+        xchange = true;
+      }
+   }
+  ```
+  
+Output:
+
+ ![Preview](images/DOM-Interface10.png)
+
+ ![Preview](images/DOM-Interface11.png)
+
+Here the JavaScript function `changePicture()` is started every time the button is pressed. First we used `querySelector()` to search for an element with `class="pic"` and then assigned it to the variable `current`. The `ìf` and `else` branches only serve to allow the button to be used more than once by checking the global variable `xchange` and setting it again in the corresponding branch according to the change. With `current.src` and `current.alt` and the assignment of another image or text the actual change of the attribute takes place.
+
+
+### Change the style of an HTML element
