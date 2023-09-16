@@ -530,9 +530,7 @@ script.js:
   
 Output:
 
- ![Preview](images/DOM-Interface7.png)
-
- ![Preview](images/DOM-Interface8.png)
+ <img src="images/DOM-Interface7.png" width="400"> <img src="images/DOM-Interface8.png" width="400">
 
 Here not only a text was transferred with `innerHTML`, but also a HTML tag `<strong>`, that is the advantage of `innerHTML`. Instead of `innerHTML` one could have used `textContent`, but then the HTML tag would have no effect, because the HTML tag is interpreted as a string.
 
@@ -620,7 +618,7 @@ script.js:
 
 Output:
 
- <img src="images/DOM-Interface12.png" width="300"> <img src="images/DOM-Interface13.png" width="300">
+ <img src="images/DOM-Interface12.png" width="400"> <img src="images/DOM-Interface13.png" width="400">
 
 Here the style of the `<p>` element was changed and by clicking the button the `<h1>` element was changed too. The corresponding element is changed by assigning a CSS valid value to `style.property` e.g. `headline.style.color = "limegreen";`.
 
