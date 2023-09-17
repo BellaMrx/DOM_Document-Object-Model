@@ -13,6 +13,7 @@
  5. Change HTML element, attribute or style 
  6. React to JavaScript events
  7. Handle the events with the *event handler*
+ 8. Overview of popular JavaScript events
 
 ---------------------------------------------
 
@@ -784,3 +785,30 @@ Output:
 
  <img src="images/DOM-Interface16.png" width="400"> <img src="images/DOM-Interface17.png" width="400">
 
+In this example, the button has been assigned four event handlers. Two event handlers are executed when the button is clicked (`click`) and one event handler each when the user places the mouse on the button `mouseover` and when the user leaves the button again with the mouse `mouseout`.
+
+In the method `addEventListener()` the prefix `on` is no longer used, so instead of `onclick` only use `click`.
+
+If an event handler is to be removed from the list again, this can be realized with the `removeEventListener()` method:
+
+  ```
+   element.removeEventListener("click", changeColor)    // changeColor name of the function
+  ```
+
+
+#### Anonymous wrapper function
+If an event handler with parameter is needed, an anonymous wrapper function can be written:
+
+  ```
+   function changeText(newTxt) {
+    document.querySelector('.update').innerHTML = newTxt;
+   }
+   ...
+   let txt = "Text has been changed";
+   element.addEventListener("click", () => {changeText(txt)});
+  ```
+
+If the `click`- event is executed, calls the function `changeText()` with the parameter `txt` within an anonymous function.
+
+
+## 8. Overview of popular JavaScript events
