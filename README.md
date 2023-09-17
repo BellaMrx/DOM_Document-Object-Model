@@ -12,6 +12,8 @@
  4. Access elements in the DOM  
  5. Change HTML element, attribute or style 
  6. React to JavaScript events
+ 7. Handle the events with the *event handler*
+
 ---------------------------------------------
 
 ## 1. Introduction to the DOM of an HTML document
@@ -21,7 +23,7 @@ The HTML elements of a document are composed into a hierarchical tree structure.
 
  ![Preview](images/DOM_Tree.png)
 
-All individual elements of this DOM tree are **nodes** and are related to each other. E.g. the `head` -element (**parent element**) has two **child elements**, the `title` and the `meta` -element. The `title` and the `meta` -element are also called **siblings** here. The same applies to the `body` element. 
+All individual elements of this DOM tree are *nodes* and are related to each other. E.g. the `head` -element (*parent element*) has two *child elements*, the `title` and the `meta` -element. The `title` and the `meta` -element are also called *siblings* here. The same applies to the `body` element. 
 
 The HTML attributes and the contents of the HTML elements are also nodes of a DOM tree.
 
@@ -33,7 +35,7 @@ The three important node types:
 
 Here, the `p` element is the HTML element node and this contains an HTML attribute node with `lang="en"` also the text of the `p` element is a real node (text node). These nodes in the DOM tree can be accessed using JavaScript.
 
-Thanks to the division into node objects, where all HTML HTML documents, HTML attributes and the contents of a node represent and these nodes are related to each other in the tree by **parent**, **child**, or **sibling** relationships, it is possible to access each of these nodes using various **DOM methods** and **DOM properties**.
+Thanks to the division into node objects, where all HTML HTML documents, HTML attributes and the contents of a node represent and these nodes are related to each other in the tree by *parent*, *child*, or *sibling* relationships, it is possible to access each of these nodes using various *DOM methods* and *DOM properties*.
 
 
 ## 2. The `document` object
@@ -250,10 +252,10 @@ Output:
 
  <img src="images/DOM-Interface2.png" width="400">
 
-`getElementsByTagName()` does not return an array, but a **Node** list (Live NodeList) which can be read with a loop. No array typical method (e.g. `forEach()`) can be called directly on a node list.
+`getElementsByTagName()` does not return an array, but a *Node* list (Live NodeList) which can be read with a loop. No array typical method (e.g. `forEach()`) can be called directly on a node list.
 
 
-### Search HTML elements with a specific **class** attribute
+### Search HTML elements with a specific *class* attribute
 If you want to search for an HTML element with a specific CSS class name, you can use the `getElementsByClassName()` method.
    ```
     let element = document.getElementsByClassName('class');
@@ -267,7 +269,7 @@ In the meantime, it also makes sense to use the `querySelectorAll()` method to f
    ```
 
 
-### Search HTML elements with a specific **name** attribute
+### Search HTML elements with a specific *name* attribute
 If you want to search for nodes in the HTML document that contain the HTML attribute `name` with a specific value, you can use the `getElementsByName()` method. 
 
   [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_6) --> **Examples/Part_6/...** 
@@ -306,7 +308,7 @@ Output:
  <img src="images/DOM-Interface3.png" width="400">
 
 With the statement `let colors = document.getElementsByName('color');` in the function `getColor()` all nodes are found where `name="color"` is noted and stored in `colors`. The `if` conditions `(colors[i].checked)` are used to check whether the radio button was checked (= `true`) or not checked (= `false`).
-The **event handler** `onclick` will execute the `getColor()` event function when the element is clicked.
+The *event handler* `onclick` will execute the `getColor()` event function when the element is clicked.
 
 Another example with `querySelector()` and `querySelectorAll()`:
   [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_7) --> **Examples/Part_7/...** 
@@ -544,7 +546,7 @@ script.js:
   ```
  <img src="images/DOM-Interface9.png" width="400">
 
-To prevent a **cross-site scripting attack**, HTML5 dictates that an `innerHTML` inserted `<script>` tag must not be executed. However, since it is still possible to execute JavaScript without a `<script>` element, innerHTML should not be used for strings over which you have no control.
+To prevent a *cross-site scripting attack*, HTML5 dictates that an `innerHTML` inserted `<script>` tag must not be executed. However, since it is still possible to execute JavaScript without a `<script>` element, innerHTML should not be used for strings over which you have no control.
 
 
 ### Change the value of an HTML attribute
@@ -627,9 +629,9 @@ In CSS `font-style` is used with hyphen. In JavaScript the hyphen is set for the
 
 
 ## 6. React to JavaScript events
-Web pages only become truly interactive with the help of **JavaScript events**. In the web browser, an **event** is triggered when an action is performed in the document or on a specific HTML element. For example, the web browser generates an event when the web page is fully loaded, the mouse is moved, or a button is clicked. The triggered event is then queued in an event queue to ensure that an event that was triggered first is also handled first (first-in-first-out principle). An event loop continuously checks whether a new event is present in the event queue and passes the event on to the so-called **event handler**.
+Web pages only become truly interactive with the help of *JavaScript events*. In the web browser, an *event* is triggered when an action is performed in the document or on a specific HTML element. For example, the web browser generates an event when the web page is fully loaded, the mouse is moved, or a button is clicked. The triggered event is then queued in an event queue to ensure that an event that was triggered first is also handled first (first-in-first-out principle). An event loop continuously checks whether a new event is present in the event queue and passes the event on to the so-called *event handler*.
 
-You don't have to care about the **event types** themselves, they are already included in JavaScript and become applicable via special keywords. The number of existing events in JavaScript are pretty extensive:
+You don't have to care about the *event types* themselves, they are already included in JavaScript and become applicable via special keywords. The number of existing events in JavaScript are pretty extensive:
 
 | Event                                                              | Description                                   |
 |------------------------------------------------------------------- | --------------------------------------------- |
@@ -640,6 +642,20 @@ You don't have to care about the **event types** themselves, they are already in
 | `touchstart`, `touchend`, `touchchanel`, `touchleave`, `touchmove` | touch events                                  |
 | `onplay`, `oncanplay`, `onpause`, `oncanplaythrough`, `onplaying`, `ondurationchange`, `onvolumechange`, `onended` | Events for playing video and audio |
 | `ondrag`, `ondraging`, `ondragenter`, `ondragleave`, `ondragover`, `ondragstart`, `ondrop` | drag-and-drop events  |
-| `animationstart`, `animationend`, `animationiteration`             | Animation events for CSS animatons            |
+| `animationstart`, `animationend`, `animationiteration`             | animation events for CSS animatons            |
 
 
+The number of event types is huge. Here I will only explain the classic events of a user interface like mouse and keyboard events.
+
+In addition to the type of the event, an *event target* is also required to which the event is connected, e.g. if a *click* event is to be used for a button, then this button must also be used as the *event target*, usually a `<button>` element.
+
+In addition to the *event target* and the *event type*, a *callback function* is also needed to be called when the event for the event target has occurred. This *callback function* is set up with an *event handler* for a specific object and event type. A distinction is made here between *event handlers*, which are defined via the property (e.g. `onclick`), and *event listeners*, which are defined via the method `addEventListener()`. The difference is that per event only one *event handler* can be defined on an element, with an *event listener* several are possible.
+
+When an event of the specified type is raised at the specified target, the web browser calls the event handler so that it can be taken care of with a JavaScript callback function and respond accordingly. 
+
+
+## 7. handle the events with the *event handler*
+An *event handler* is a JavaScript statement or function that is executed when a specific JavaScript event is triggered. There are three ways to set up an event handler for an event:
+
+
+### Set up event handler as HTML attribute in HTML element
