@@ -639,7 +639,7 @@ You don't have to care about the *event types* themselves, they are already incl
 | `onclick`, `ondblclick`, `onmousedown`, `onmousemove`, `onmouseover`, `onmouseout`, `onmouseup` | mouse event      |
 | `onkeypress`, `onkeydown`, `onkeyup`                               | keyboard events                               |
 | `onblur`, `onchange`, `onfocus`, `onreset`, `onselect`, `onsubmit` | form events                                   |
-| `touchstart`, `touchend`, `touchchanel`, `touchleave`, `touchmove` | touch events                                  |
+| `touchstart`, `touchend`, `touchcanel`, `touchleave`, `touchmove` | touch events                                  |
 | `onplay`, `oncanplay`, `onpause`, `oncanplaythrough`, `onplaying`, `ondurationchange`, `onvolumechange`, `onended` | Events for playing video and audio |
 | `ondrag`, `ondraging`, `ondragenter`, `ondragleave`, `ondragover`, `ondragstart`, `ondrop` | drag-and-drop events  |
 | `animationstart`, `animationend`, `animationiteration`             | animation events for CSS animatons            |
@@ -654,8 +654,80 @@ In addition to the *event target* and the *event type*, a *callback function* is
 When an event of the specified type is raised at the specified target, the web browser calls the event handler so that it can be taken care of with a JavaScript callback function and respond accordingly. 
 
 
-## 7. handle the events with the *event handler*
+## 7. Handle the events with the *event handler*
 An *event handler* is a JavaScript statement or function that is executed when a specific JavaScript event is triggered. There are three ways to set up an event handler for an event:
 
 
 ### Set up event handler as HTML attribute in HTML element
+With the event handler as HTML attribute, the script can be called when loading an HTML document if the HTMLL element has already been loaded.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_14) --> **Examples/Part_14/...** 
+
+index.html:
+  ```
+   <body>
+    <h1 class="headline">Change HTML style</h1>
+    <p class="p-style">A simple paragraph text ...</p>
+    <button onclick="changeColor()">Change Color</button>  <!-- onclick event + function -->
+    <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   function changeColor() {
+     let headline = document.querySelector('.headline');
+     headline.style.color = "limegreen";
+     headline.style.font = "2.5em serif";
+     headline.style.fontStyle = "italic";
+   }
+  ```
+
+Output:
+
+ <img src="images/DOM-Interface12.png" width="400"> <img src="images/DOM-Interface13.png" width="400">
+
+The disadvantage of this method is that only one event handler can be registered. The `addEventListener()` method, on the other hand, can be used to register several.
+
+
+### Set up event handler as property of an object
+For the event to be caught, we need an HTML element to catch the event and assign the event handler to this element.
+  ```
+   // Element which should catch the event
+   let element = document.querySelector('selector');
+   // Event to be intercepted and event handler
+   element.onmouseover = function() {...};
+  ```
+
+Since functions are full-fledged objects in JavaScript, it is possible to assign them to a property.
+
+And so the whole thing can be noted together:
+  ```
+   document.querySelector('selector').onmouseover = function() {...};
+  ```
+
+Example:
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_15) --> **Examples/Part_15/...** 
+
+index.html:
+  ```
+   <body>
+    <h1 class="headline">Change HTML style</h1>
+    <p class="p-style">A simple paragraph text ...</p>
+    <button id="button01">Change Color</button>
+    <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   document.querySelector('#button01').onclick = function() {
+     document.querySelector('.p-style').style.color = "red";
+     document.querySelector('.p-style').style.font = "1.2em Arial";
+   }
+  ```
+
+Output:
+
+ <img src="images/DOM-Interface14.png" width="400"> <img src="images/DOM-Interface15.png" width="400">
