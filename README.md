@@ -731,3 +731,56 @@ script.js:
 Output:
 
  <img src="images/DOM-Interface14.png" width="400"> <img src="images/DOM-Interface15.png" width="400">
+
+Here, a function has been assigned as an event handler to an HTML element where the value of `id` is equal to `button01`. This event handler is executed when the button is clicked ('onclick'). The event handler can be removed again withlife of `element.onclick=null;`. Thus, only one event handler can be assigned to each object for a given event. If another event handler is added to an event, the previous event handler is overwritten.
+
+
+### Set up an event handler with `addEventListener()`
+The `addEventListener()` method can be used to associate an HTML element with an event handler when a specific event occurs. Unlike assigning the event handler directly as a property to an object, the `addEventListener()` method can be used to add an event handler to an HTML element without overriding an already linked event. This allows multiple event handlers to be added to an element and the same event. 
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_16) --> **Examples/Part_16/...** 
+
+index.html:
+  ```
+   <body>
+    <h1 class="headline">Change HTML style</h1>
+    <p class="p-style">A simple paragraph text ...</p>
+    <button id="button01">Change Color</button>
+    <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   let element = document.querySelector('#button01');
+   if (element) {
+     element.addEventListener("click", changeColor);
+     element.addEventListener("click", changeText);
+     element.addEventListener("mouseover", myborder);
+     element.addEventListener("mouseout", noborder);
+   } else {
+     console.log("Error: Could not set up event handler!")
+   }
+
+  function changeColor() {
+     document.querySelector('.p-style').style.color = "limegreen";
+     document.querySelector('.p-style').style.font = "1.2em Arial";
+   }
+
+   function changeText() {
+     document.querySelector('.p-style').innerHTML = "New text";
+   }
+
+   function myborder() {
+     document.querySelector('.p-style').style.border = "1px solid black";
+   }
+
+   function noborder() {
+     document.querySelector('.p-style').style.border = "0px solid black";
+   }
+  ```
+
+Output:
+
+ <img src="images/DOM-Interface16.png" width="400"> <img src="images/DOM-Interface17.png" width="400">
+
