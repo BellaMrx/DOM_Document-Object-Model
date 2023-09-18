@@ -847,7 +847,89 @@ The opposite of `onload` is `onunload`, which can be used when the user leaves t
 
 JavaScript version:
   ```
-   window.unonload = function() {
+   window.onunload = function() {
     // JavaScript code
    }
   ```
+
+#### `DOMContentLoaded` vs. `load`
+The difference between the two versions is that with `load` the event is only triggered when the complete document (DOM tree) including all external resources like JavaScript files, CSS files or images has been loaded. With the event `DOMContentLoaded`, on the other hand, the event is triggered when only the entire DOM tree of the web page has been loaded.
+
+  ```
+   function initJS () {
+    // JavaScript code
+   }
+   window.addEventListener('load', initJS);
+  ```
+
+  ```
+   function initJS () {
+    // JavaScript code
+   }
+   document.addEventListener('DOMContentLoaded', initJS);
+  ```
+
+
+### JavaScript events for the mouse
+| JavaScript Events | The event occurs when ...                               |
+|------------------ | ------------------------------------------------------- |
+| `click`           | ... an element has been clicked.                        |
+| `dblclick`        | ... an element has been double-clicked.                 |
+| `mousedown`       | ... the mouse button is pressed down over an element.   |
+| `mousemove`       | ... the mouse pointer is over the element and is moved. |
+| `mouseover`       | ... the mouse pointer is over the element.              |
+| `mouseout`        | ... the mouse pointer is moved away from an element.    |
+| `mouseup`         | ... the down-pressed mouse button is released again.    |
+
+Example:
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_17) --> **Examples/Part_17/...** 
+
+index.html:
+  ```
+   <head>
+     <meta charset="UTF-8">
+     <style>
+        .p-style {
+            padding: 1em;
+            border: 1px solid black;
+        }
+     </style>
+     <title>Mouse events</title>
+   </head>
+   <body>
+     <h1>Mouse events</h1>
+     <p class="p-style">Cursor here</p>
+     <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   let element = document.querySelector('.p-style');
+   element.addEventListener("mouseover", mymouseover);
+   element.addEventListener("mousedown", mymousedown);
+   element.addEventListener("mouseup", mymouseup);
+   element.addEventListener("mouseout", mymouseout);
+
+   function mymouseover() {
+     element.innerHTML = "Mouse cursor over HTML element";
+   }
+
+   function mymousedown() {
+     element.innerHTML = "Mouse button pressed";
+   }
+
+   function mymouseup() {
+     element.innerHTML = "Mouse button released";
+   }
+
+   function mymouseout() {
+     element.innerHTML = "Exit HTML element";
+   }
+  ```
+ <img src="images/DOM-Interface18.png" width="400">
+
+Here for the events `mouseover`, `mousedown`, `mouseup`, `mouseout` different event handlers were set up for the HTML element with `class="p-style"` with the method `addEventListener()`. Depending on which mouse event set up with an event handler is currently occurring, a hint about it is displayed.
+
+
+### JavaScript events for touchscreen
