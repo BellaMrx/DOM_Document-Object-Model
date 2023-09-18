@@ -941,7 +941,7 @@ If a mobile-only application needs to be written, it makes sense to replace the 
 |-------------------| -------------------------------------------------------------------------------------------- |
 | `touchstart`      | ... the surface of the touchscreen is touched. Corresponds to a `mousedown`                  |
 | `touchend`        | ... when the finger is lifted from the touchscreen surface. Corresponds to a `mouseup        |
-| `tochcancel`      | ... when the finger leaves the area                                                          |
+| `touchcancel`      | ... when the finger leaves the area                                                          |
 | `touchmove`       | ... when the finger is slid over the surface of the touchscreen. Equivalent to a `mousemove` |
 
 
