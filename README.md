@@ -812,7 +812,6 @@ If the `click`- event is executed, calls the function `changeText()` with the pa
 
 
 ## 8. Overview of popular JavaScript events
-
 ### The JavaScript events of the user interface (window events)
 This is an overview of popular JavaScript events, primarily related to the web browser's user interface, that can be acted upon with an event handler.
 
@@ -823,6 +822,7 @@ This is an overview of popular JavaScript events, primarily related to the web b
 | `resize`          | ... the window of the document has changed in size.      |
 | `scroll`          | ... the document has been scrolled.                      |
 | `unload`          | ... the web browser removes a document from the window or frameset, or the web browser is closed. |
+
 
 #### The JavaScript events `onload` and `onunload` in practice
 The `onload` event occurs when an object has been loaded, and is therefore often used in the `body` element to execute a script when the complete web page with images, scripts, CSS, etc. has been loaded.
@@ -933,3 +933,16 @@ Here for the events `mouseover`, `mousedown`, `mouseup`, `mouseout` different ev
 
 
 ### JavaScript events for touchscreen
+In addition to mouse events, touch events must also be taken into account, since more and more devices are controlled with touchscreens instead of mice. The `click` event remains the same for mouse control as well as for touch screens and can be used for a mouse click and for touch. All other mouse events can also be used by mobile browsers on touch devices. Thus, in most cases, there is no need to use special touch events.
+
+If a mobile-only application needs to be written, it makes sense to replace the mouse event with the touch event.
+
+| JavaScript Events | The event occurs when ...                   			                                           |
+|-------------------| -------------------------------------------------------------------------------------------- |
+| `touchstart`      | ... the surface of the touchscreen is touched. Corresponds to a `mousedown`                  |
+| `touchend`        | ... when the finger is lifted from the touchscreen surface. Corresponds to a `mouseup        |
+| `tochcancel`      | ... when the finger leaves the area                                                          |
+| `touchmove`       | ... when the finger is slid over the surface of the touchscreen. Equivalent to a `mousemove` |
+
+
+### JavaScript events with the keyboard
