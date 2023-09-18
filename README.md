@@ -388,7 +388,7 @@ script.js:
 
 Output:
 
- <img src="images/DOM-Interface4.png" width="400">
+ <img src="images/DOM-Interface4.png" width="600">
 
 Here, each `article` element has been styled with a background color if it is an odd element `(nth-child(odd))` from the parent element. If all even elements are to be styled, `(nth-child(even))` is used.
 
