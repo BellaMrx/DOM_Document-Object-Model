@@ -812,3 +812,42 @@ If the `click`- event is executed, calls the function `changeText()` with the pa
 
 
 ## 8. Overview of popular JavaScript events
+
+### The JavaScript events of the user interface (window events)
+This is an overview of popular JavaScript events, primarily related to the web browser's user interface, that can be acted upon with an event handler.
+
+| JavaScript events | The event occurs when ...                                |
+|------------------ | -------------------------------------------------------- |
+| `error`           | ... an error occurred while loading a document or image. |
+| `load`            | ... the document or frameset has been loaded.            |
+| `resize`          | ... the window of the document has changed in size.      |
+| `scroll`          | ... the document has been scrolled.                      |
+| `unload`          | ... the web browser removes a document from the window or frameset, or the web browser is closed. |
+
+#### The JavaScript events `onload` and `onunload` in practice
+The `onload` event occurs when an object has been loaded, and is therefore often used in the `body` element to execute a script when the complete web page with images, scripts, CSS, etc. has been loaded.
+
+  ```
+   <body onload="haveCookie()">
+  ```
+When the complete web page is loaded, the event handler `haveCookie()` is executed.
+
+There is also a pure JavaScript version:
+  ```
+   window.onload = function() {
+    // JavaScript code
+   }
+  ```
+
+The opposite of `onload` is `onunload`, which can be used when the user leaves the page, e.g. by clicking a link, submitting a form or closing the window in the browser. The `onunload` event is also called when the user reloads the page. However, the `onload` event is also executed in this case.
+
+  ```
+   <body onload="haveCookie()" onunload="setCookie()">
+  ```
+
+JavaScript version:
+  ```
+   window.unonload = function() {
+    // JavaScript code
+   }
+  ```
