@@ -14,6 +14,7 @@
  6. React to JavaScript events
  7. Handle the events with the *event handler*
  8. Overview of popular JavaScript events
+ 9. Events with the `event` object 
 
 ---------------------------------------------
 
@@ -967,6 +968,56 @@ It can also react to keyboard events such as pressing, holding down and releasin
 | `submit` 			     | ... the form is sent.                                                                        |
 
 
+### JavaScript events for the Web APIs
+There is an extensive list of event types for playing audio and video files. The drag-and-drop API for dragging and dropping also defines event types. Furthermore, there are various events for the web APIs such as for creating offline web applications or web application APIs for asynchronous communication. 
 
 
+# 9. Events with the `event` object
+It is possible to determine which key on the keyboard triggered the event. This information is already supplied with the occurring event as a property.
+
+Events are again objects that have a variety of properties and methods. The `event` object is passed to the function to be called, in order to be able to access it, the `event` object must be explicitly passed to the function as the first parameter.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_18) --> **Examples/Part_18/...** 
+
+index.html:
+  ```
+   <body>
+     <h1>Characteristics of events</h1>
+     <p onmousedown="show_pos(event)" class="p-style">Click here</p>
+     <p>Keystroke: <input type="text" onkeydown="keystroke(event)"></p>
+     <output></output>
+     <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   function show_pos(ev) {
+     let x = ev.clientX;
+     let y = ev.clientY;
+     let text = "Pos-X: " + x + " / Pos-Y: " + y;
+     if (ev.shiftKey == true) {
+        text += " / (Shift) key has been pressed down!";
+     } else {
+        text += " / (Shift) key has not been pressed down!";
+     }
+     text += " -> Mouse button: " + ev.button;
+     document.querySelector('output').innerHTML = text;
+     console.log(ev);
+   }
+
+   function keystroke(ev) {
+     let text = "Key code: " + ev.keyCode + "=" + String.fromCharCode(ev.keyCode);
+     document.querySelector('output').innerHTML = text;
+   }
+  ```
+ <img src="images/DOM-Interface19.png" width="400">
+
+Here the `event` object is used as a parameter for the event handler as a link to the properties of the event. Within the function, the values or properties of the `event` object can be accessed. With `clientX` and `clientY` the horizontal and vertical coordinate position respectively is returned relative to the current window in which the corresponding event (`onmousedown`) was triggered. Also tested here was whether the `shiftKey` property equals `true`. This means that the **shift** key was pressed at the same time as the mouse was pressed down.
+With `console.log(ev)` it is possible to display all information about the `event` object in the JS console.
+
+There are many properties, here is a small overview:
+
+| Property           | Description |
+|------------------- | -------------------------------------- |
 
