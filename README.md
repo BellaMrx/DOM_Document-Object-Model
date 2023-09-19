@@ -15,6 +15,7 @@
  7. Handle the events with the *event handler*
  8. Overview of popular JavaScript events
  9. Events with the `event` object 
+ 10. Suppress standard action of events
 
 ---------------------------------------------
 
@@ -972,7 +973,7 @@ It can also react to keyboard events such as pressing, holding down and releasin
 There is an extensive list of event types for playing audio and video files. The drag-and-drop API for dragging and dropping also defines event types. Furthermore, there are various events for the web APIs such as for creating offline web applications or web application APIs for asynchronous communication. 
 
 
-# 9. Events with the `event` object
+## 9. Events with the `event` object
 It is possible to determine which key on the keyboard triggered the event. This information is already supplied with the occurring event as a property.
 
 Events are again objects that have a variety of properties and methods. The `event` object is passed to the function to be called, in order to be able to access it, the `event` object must be explicitly passed to the function as the first parameter.
@@ -1018,6 +1019,19 @@ With `console.log(ev)` it is possible to display all information about the `even
 
 There are many properties, here is a small overview:
 
-| Property           | Description |
-|------------------- | -------------------------------------- |
+| Property                        | Description |
+|-------------------------------- | -------------------------------------- |
+| `altKey`, `ctrlKey`, `shiftKey` | Returns whether or not the **Alt**, **Ctrl** or **Shift** key was held down when the event happened. |	
+| `bubbles`                       | Indicates whether an event can ascend or not, i.e. whether an event also applies to the parent element and can ascend in the DOM tree (*bubbling*). |	
+| `button`                        | Contains a value which mouse button was pressed. `0` is the left, `1` for the middle and `2` for the right mouse button. |
+| `clientX`, `clientY`            | Contains the horizontal (`clientX`) and vertical (`clientY`) pixel value with the mouse cursor position relative to the upper left corner of the window. |
+| `cancelable`                    | Returns whether the default action of an event can be prevented or not. |
+| `currentTarget`                 | Returns the element whose event listener triggered the event. |
+| `keyCode`                       | Contains the keyboard code of the last pressed key. The character can be determined with `String.formCode(event.keyCode)`. |
+| `metaKey`                       | Indicates whether the meta key was pressed when the event occurred. |
+| `screenX`, `screenY`            | Contains the horizontal (`screenX`) and vertical (`screenY`) pixel value with, the mouse pointer position relative to the upper left corner of the screen. |
+| `target`                        | Returns the element that triggered the event. |
+| `type`                          | Returns the name of the event. |
 
+
+## 10. Suppress standard action of events
