@@ -941,8 +941,32 @@ If a mobile-only application needs to be written, it makes sense to replace the 
 |-------------------| -------------------------------------------------------------------------------------------- |
 | `touchstart`      | ... the surface of the touchscreen is touched. Corresponds to a `mousedown`                  |
 | `touchend`        | ... when the finger is lifted from the touchscreen surface. Corresponds to a `mouseup        |
-| `touchcancel`      | ... when the finger leaves the area                                                          |
+| `touchcancel`     | ... when the finger leaves the area                                                          |
 | `touchmove`       | ... when the finger is slid over the surface of the touchscreen. Equivalent to a `mousemove` |
 
 
 ### JavaScript events with the keyboard
+It can also react to keyboard events such as pressing, holding down and releasing keys. When pressed and released, three JavaScript events are triggered in the order `keydown`, `keypress` and `keyup`.
+
+| JavaScript Events  | The event occurs when ...                   			            |
+|------------------- | ------------------------------------------------------------ |
+| `keydown`          | ... a key on the keyboard has been pressed.                  |
+| `keyup`            | ... a depressed key of the keyboard was released.            |
+| `keypress`         | ... a key is depressed and held down.                        |
+
+
+### JavaScript events for HTML forms
+
+| JavaScript Events  | The event occurs when ...                   			                                            |
+|------------------- | -------------------------------------------------------------------------------------------- |
+| `blur` 		 	       | ... a form element loses focus.                                                              |
+| `change` 			     | ... the content of a form element (`<input>`, `<select>`, `<textarea>`) has changed.         |
+| `focus` 		 	     | ... an element (`<label>`, `<input>`, `<select>`, `<textarea>`, `<button>`) loses the focus. |
+| `reset` 			     | ... the form is reset.                                                                       |
+| `select` 		 	     | ... a text has been selected in an input field (`<input>`, `<textarea>`).                    |
+| `submit` 			     | ... the form is sent.                                                                        |
+
+
+
+
+
