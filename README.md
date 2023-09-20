@@ -15,7 +15,8 @@
  7. Handle the events with the *event handler*
  8. Overview of popular JavaScript events
  9. Events with the `event` object 
- 10. Suppress standard action of events
+ 10. Prevent default action of events
+ 11. The event flow (*event propagation*)
 
 ---------------------------------------------
 
@@ -1034,4 +1035,52 @@ There are many properties, here is a small overview:
 | `type`                          | Returns the name of the event. |
 
 
-## 10. Suppress standard action of events
+## 10. Prevent default action of events
+HTML elements such as a simple link or a button to submit a form execute events even without JavaScript. Certain events are handled by the web browser by executing a standard action, without a special event handler function:
+  ```
+   <a class="link" href="https://github.com/BellaMrx">One link</a>
+  ```
+
+If now something else should happen than following the link and loading the web page, it is possible to prevent the default action, this can be done with the method `preventDefault()`:
+  ```
+   event.preventDefault();
+  ```
+This method prevents the intended standard action, this process is also called *Event-Cancellation*.
+
+Example:
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_19) --> **Examples/Part_19/...** 
+
+index.html:
+  ```
+   <body>
+     <h1>Prevent default actions</h1>
+     <p><a class="link" href="https://github.com/BellaMrx">One simple link</a></p>
+     <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   document.querySelector('.link').onclick = function(event) {
+     if (event.preventDefault) {
+        event.preventDefault();
+     }
+     // Here write the actual JavaScript code what 
+     // should happen when the link was clicked on
+     console.log("Default action prevented");
+   }
+  ```
+
+Here the default action of the `click` event on a link has been suppressed, i.e. when the link is clicked, the link is not opened.
+
+
+## 11. The event flow (*event propagation*)
+
+
+
+
+
+
+
+
