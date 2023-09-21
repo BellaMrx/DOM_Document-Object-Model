@@ -17,6 +17,7 @@
  9. Events with the `event` object 
  10. Prevent default action of events
  11. The event flow (*event propagation*)
+ 12. Add, change and remove HTML elements
 
 ---------------------------------------------
 
@@ -1117,7 +1118,7 @@ script.js:
      }
    }
   ```
- <img src="images/DOM-Interface20.png" width="400">
+ <img src="images/DOM-Interface20.png" width="500">
 
 Here the `p` element in `article` has been set up the handler function `getMouse()` which is executed when the mouse button in the `p` element is pressed down. If the left mouse button in the `p` element is pressed down, an information `Mouse button pressed!` is output.
 
@@ -1186,6 +1187,45 @@ When the left mouse button in the p element has been pressed down, the `getMouse
 
 
 ### Intervening in the event flow during the capturing phase
+If you want to intervene in the event flow already in the capturing phase, i.e. already when it goes from top to bottom, then this can be done with the `addEventListener()` method. With `<element onevent="handlerFunc()">` as HTML attribute or with `element.onevent = handlerFunc` as property of an object the handler can be registered only for the bubbling phase. If the value here is set to `true`, the event handler or event listener will be registered for the capturing phase. By default, this third parameter is set to `false` and therefore does not need to be explicitly specified.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_23) --> **Examples/Part_23/...** 
+
+index.html:
+  ```
+    <article>
+        <h1>Set up event handler for capturing phase</h1>
+        <p class="my-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+            Aenean commodo eget dolor. Aenean massa.
+        </p>
+    </article>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   let id = document.querySelector('.my-p');
+   if (id) {
+     id.addEventListener("mousedown", get_mouse_p, true);
+   } else {
+     alert("No element with id=myId found!");
+   }
+
+   function get_mouse_p() {
+     alert("Mouse button pressed in p!");
+   }
+  ```
+
+This way, non-ascending events can already be processed at an ancestor element. Furthermore, if the `stopPropagation` method of the 'event' object is already called in the *capturing phase*, the *target* and *bubbling phases* will not be executed at all, and the event type will thus not reach its target element.
+
+If non-ascending event types like `load`, `focus`, `blur`, `mouseenter`, `mouseleave` or `submit` are triggered, intervening in the *capturing phase* via `addEventListener("event-type", handler, true)`, can monitor such types at a central position and thus process the higher-level elements already on descent. In contrast to the *bubbling phase*, each event has a *capturing phase*. If an event handler was registered with `addEventListener()` for the *capturing phase* and this handler was called in the phase, it cannot be called again in the *bubbling phase*. Registration can only be done for the *capturing phase* or the *bubbling phase*, both are not possible.
+
+
+## 12. Add, change and remove HTML elements
+
+
+
+
 
 
 
