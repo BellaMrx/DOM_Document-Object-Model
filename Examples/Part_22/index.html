@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bubbling</title>
+    <style>
+        article {
+            padding: 15px;
+            border: 1px solid black;
+            background-color: lightgreen;
+        }
+        
+        p {
+            background-color: limegreen;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <article onmousedown="get_mouse_article()">
+        <h1>Demonstrates the bubbling</h1>
+        <p onmousedown="get_mouse_p(event)">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo eget dolor. Aenean massa.
+        </p>
+    </article>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

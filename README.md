@@ -1071,11 +1071,125 @@ script.js:
      console.log("Default action prevented");
    }
   ```
-
 Here the default action of the `click` event on a link has been suppressed, i.e. when the link is clicked, the link is not opened.
 
 
 ## 11. The event flow (*event propagation*)
+The event flow describes how an event moves through the DOM tree when an event is triggered. This event flow is also called *event propagation* and takes place in three phases:
+
+- **Capturing phase**: Here, the event descends from the top document node in the DOM tree to the target element of the event. By descending to the target element, it becomes possible to take a closer look at the events before they reach their target. An intercepting event handler can be used to suppress certain events.
+
+- **Target phase**: When the event reaches its target element, the corresponding event handlers registered for the corresponding event type are triggered and the **bubbling phase** is initiated.
+
+- **Bubbling phase**: Starting from the target element, the event climbs back up the element hierarchy of the DOM tree; this ascending is called *bubbling*. It ensures that the registered handlers of the target element are also executed in its parent element, its grandparent element and so on up to the `document` object and then to the `window` object.
+
+
+### Bubbling phase
+In the **capturing phase**, everything in the DOM tree first descends from the top down to the target element, and then ascends back up in the **bubbling phase**.
+
+Example:
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_20) --> **Examples/Part_20/...** 
+
+index.html:
+  ```
+   <body>
+    <article>
+        <h1>Demonstrates the bubbling</h1>
+        <p onmousedown="get_mouse()">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+            <mark>Aenean commodo <strong>ligula</strong> eget dolor.</mark> Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+            consequat massa quis enim.
+        </p>
+    </article>
+    <output></output>
+    <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   function get_mouse() {
+     var text = "Mouse button pressed!"
+     var pos = document.querySelector('output');
+     if (pos) {
+        pos.innerHTML = text;
+        pos.style.background = "lightgrey";
+     }
+   }
+  ```
+ <img src="images/DOM-Interface20.png" width="400">
+
+Here the `p` element in `article` has been set up the handler function `getMouse()` which is executed when the mouse button in the `p` element is pressed down. If the left mouse button in the `p` element is pressed down, an information `Mouse button pressed!` is output.
+
+
+### Cancel bubbling with `stopPropagation()`
+The bubbling up is not always desired and can be stopped with the `stopPropagation()` method.
+
+Here the bubbling is rather disturbing:
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_21) --> **Examples/Part_21/...** 
+
+index.html:
+  ```
+    <article onmousedown="get_mouse_article()">
+        <h1>Demonstrates the bubbling</h1>
+        <p onmousedown="get_mouse_p()">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo eget dolor. Aenean massa.
+        </p>
+    </article>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   let text = "";
+
+   function get_mouse_p() {
+     alert("Mouse button pressed in p!");
+   }
+
+   function get_mouse_article() {
+     alert("Mouse button pressed in article!");
+   }
+  ```
+ <img src="images/DOM-Interface21.PNG" width="400">
+
+Here two nested elements (`p` and `article`), monitor the same `mousedown` event. When the `p` element is clicked inside the `article` element, the handler function `getMoueP()` is run. Because of *bubbling` the event rises to the top and, when reaching the `article` element, executes the `getMouseArticle()` handler function registered for the same `mousedown` event there as well.
+
+This rising of nested elements can be stopped with the `stopPropagation()` method:
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_22) --> **Examples/Part_22/...** 
+
+index.html:
+  ```
+    <article onmousedown="get_mouse_article()">
+        <h1>Demonstrates the bubbling</h1>
+        <p onmousedown="get_mouse_p()">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo eget dolor. Aenean massa.
+        </p>
+    </article>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   let text = "";
+
+   function get_mouse_p() {
+     alert("Mouse button pressed in p!");
+   }
+
+   function get_mouse_article() {
+     alert("Mouse button pressed in article!");
+   }
+  ```
+
+When the left mouse button in the p element has been pressed down, the `getMouseP`(ev) handler function set up for this purpose is called with the `event` object as a parameter. The handler function first checks whether the `stopPropagation` method exists, then executes it. By `stopPropagation()` the *bubbling* for the event type `mousedown` has been stopped, and the type is no longer passed up to the `article` element.
+
+
+### Intervening in the event flow during the capturing phase
+
+
+
+
 
 
 
