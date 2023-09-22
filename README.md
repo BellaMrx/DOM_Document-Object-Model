@@ -480,9 +480,9 @@ Two options should be mentioned, which allow access to the complete document:
 
   ```
    <script>
-	   console.log(document.body.innerHTML);
-	   console.log(document.documentElement.innerHTML);
-	 </script>
+     console.log(document.body.innerHTML);
+     console.log(document.documentElement.innerHTML);
+   </script>
   ```
 
 #### Overview of ready-made object and property collections
