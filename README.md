@@ -474,6 +474,17 @@ Output:
  <img src="images/DOM-Interface6.png" width="400">
 
 
+Two options should be mentioned, which allow access to the complete document: 
+- `document.body`: Provides access to the complete `body` element in the HTML document.
+- `document.documentElement`: Provides access to the complete HTML document, i.e. the `head` and `body` parts.
+
+  ```
+   <script>
+	   console.log(document.body.innerHTML);
+	   console.log(document.documentElement.innerHTML);
+	 </script>
+  ```
+
 #### Overview of ready-made object and property collections
 | Method                     | Description                                        |
 |--------------------------- | -------------------------------------------------- |
@@ -1222,7 +1233,14 @@ If non-ascending event types like `load`, `focus`, `blur`, `mouseenter`, `mousel
 
 
 ## 12. Add, change and remove HTML elements
+At the top of the DOM tree is the `document` object, followed by the root of the DOM tree, usually the `html` element. Below that are the `head` and the `body` elements. The `html` element is the parent element for the `head` element and the `body` element. The `head` and `body` elements also contain other child elements. All these elements are called *nodes* in the DOM. Not only the HTML elements are nodes, but also the HTML attributes and text contents are interconnected and are real nodes in the DOM tree.
 
+Regardless of the node type, all nodes in the document tree have basic properties and methods of the `Node` object. This `Node` object is an interface that can be used to access the individual nodes in the complete document tree.
+
+The manipulation via `innerHTML` has the disadvantage that an element must be present to replace or change it. With the help of the `Node` interface it is possible to manipulate the DOM of an HTML document directly.
+
+
+### Create and add HTML elements and content
 
 
 
