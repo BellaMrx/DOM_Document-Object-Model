@@ -1362,7 +1362,171 @@ script.js:
      alert("No child nodes available!!!");
    }
   ```
+
  <img src="images/DOM-Interface26.png" width="500">
+
+
+### Add a new HTML element to the DOM tree more selectively
+The `appendChild` method is used to add a new node as the last child node of the root element. If the new node is to be inserted at an optional position, there is the method `insertBefore(new, old)`. With this method a node `new` can be inserted before `old` below the root node.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_27) --> **Examples/Part_27/...** 
+
+index.html:
+  ```
+    <article class="article-01">
+        <h1>Item 1: Hang node in between</h1>
+        <p>First paragraph text</p>
+        <p>Second paragraph text</p>
+    </article>
+    <button id="add">Insert node</button>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   document.querySelector('#add').onclick = function() {
+     let p_new = document.createElement("p");
+     let t_new = document.createTextNode("A new paragraph");
+     p_new.appendChild(t_new);
+
+     let root = document.querySelector('.article-01');
+     if (root) {
+         let traverse = root.childNodes;
+         for (let i = 0; i < traverse.length; i++) {
+             if (traverse[i].nodeName == "H1") {
+                root.insertBefore(p_new, traverse[i].nextSibling);
+                break; // End loop
+             }
+         }
+     }
+   }
+  ```
+ <img src="images/DOM-Interface27a.png" width="400">  <img src="images/DOM-Interface27b.png" width="400">
+
+If a node is found in `nodeName` that contains the `h1` element, the newly created `pNew` node is inserted after the `h1` element. To prevent the new paragraph from being inserted before the `h1` heading, `nextSibling` must also be used, which will hook the new node as the next node on the same level.
+
+
+### Delete existing HTML element from DOM tree
+If an already existing child node is to be removed from the DOM tree, this can be done with the `removeChild(child)` method. The node to be deleted can be a complete fragment with further child nodes (which then also deletes all child nodes) or a child node standing alone.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_28) --> **Examples/Part_28/...** 
+
+index.html:
+  ```
+    <article class="article-01">
+        <h1>Article 1: Remove nodes</h1>
+        <p>First paragraph text</p>
+        <p>Second paragraph text</p>
+    </article>
+    <button id="remove">Delete node</button>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   document.querySelector('#remove').onclick = function() {
+     let root = document.querySelector('.article-01');
+     if (root) {
+        let traverse = root.childNodes;
+        for (let i = 0; i < traverse.length; i++) {
+            if (traverse[i].nodeName == "P") {
+                root.removeChild(traverse[i]);
+                break; // End loop
+            }
+        }
+     }
+   }
+  ```
+ <img src="images/DOM-Interface28a.png" width="400">  <img src="images/DOM-Interface28b.png" width="400">
+
+If all `p` elements are to be deleted immediately, the `break` statement must be removed in this example.
+  ```
+   document.querySelector('#remove').onclick = function() {
+     let root = document.querySelector('.article-01');
+     if (root) {
+        let traverse = root.childNodes;
+        for (let i = 0; i < traverse.length; i++) {
+            if (traverse[i].nodeName == "P") {
+                root.removeChild(traverse[i]);
+            }
+        }
+     }
+   }
+  ```
+
+
+### Replace an HTML element in the DOM tree
+A node can be replaced with the `replaceChild(new, old)` method, which replaces the `old` node with the `new` node. The replaced node is deleted in the process.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_29) --> **Examples/Part_29/...** 
+
+index.html:
+  ```
+    <article class="article-01">
+        <h1>Article 1: Replace nodes</h1>
+        <p>First paragraph text</p>
+        <p>Second paragraph text</p>
+    </article>
+    <button id="replace">Replace nodes</button>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   let counter = 0;
+   document.querySelector('#replace').onclick = function() {
+     let h_new = document.createElement("h1");
+     let t_new = document.createTextNode("Article " + ++counter + ": New headline");
+     h_new.appendChild(t_new); // <p>A new paragraph</p>
+
+     let root = document.querySelector('.article-01');
+     if (root) {
+        let traverse = root.childNodes;
+        for (let i = 0; i < traverse.length; i++) {
+            if (traverse[i].nodeName == "H1") {
+                root.replaceChild(h_new, traverse[i]);
+                break; // End loop
+            }
+        }
+     }
+   }
+  ```
+ <img src="images/DOM-Interface29a.png" width="400">  <img src="images/DOM-Interface29b.png" width="400">
+
+
+### Clone a node or whole fragments of the DOM tree
+If a whole fragment is to be copied, this can be done with the `cloneNode()` method. With the method `cloneNode()` an exact copy of the node is created. Depending on whether the parameters of `cloneNode(val)` are set to `true` or `false`, all child nodes will be cloned along or not.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_30) --> **Examples/Part_30/...** 
+
+index.html:
+  ```
+    <article class="article-01">
+        <h1>Article 1: Clone node</h1>
+        <p>First paragraph text</p>
+        <p>Second paragraph text</p>
+    </article>
+    <button id="clone">Clone node</button>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   document.querySelector('#clone').onclick = function() {
+     let root = document.querySelector('.article-01');
+     if (root) {
+        let new_root = root.cloneNode(true);
+        new_root.setAttribute("class", "article-02");
+        let button = document.querySelector('#clone');
+        root.parentNode.insertBefore(new_root, button);
+        button.parentNode.removeChild(button);
+     }
+   }
+  ```
+ <img src="images/DOM-Interface30a.png" width="400">  <img src="images/DOM-Interface30b.png" width="400">
+
+Here the complete node `article-01` was cloned, with all child nodes contained in it. Before the node can be mounted somewhere else, the `setAttribute()` method was used to change the `class` to `article-02`, because otherwise there would be two elements with `class="article-01"` (not wrong but not necessarily desired).
+
 
 
 
