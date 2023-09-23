@@ -1295,6 +1295,77 @@ With these properties a little navigation in the DOM tree is possible, but it is
 
 In this example, a node is searched for and the individual elements in it are traversed and their properties are output:
 
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_25) --> **Examples/Part_25/...** 
+
+index.html:
+  ```
+    <article class="article-01">
+        <h1>Article 1: Pass through nodes</h1>
+        <p>First paragraph text</p>
+        <p>Second paragraph text</p>
+    </article>
+    <article class="article-02">
+        <h2>Result</h2>
+        <p id="result"></p>
+    </article>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   let root = document.querySelector('.article-01');
+   if (root) {
+     let traverse = root.childNodes;
+     let text = traverse.length + " Elements in " +
+        root.nodeName + " contain:" + "<ol>";
+     for (var i = 0; i < traverse.length; i++) {
+        text += "<li>" + "<b>nodeName</b>: " + traverse[i].nodeName +
+            "; <b>nodeType</b>: " + traverse[i].nodeType;
+        if (traverse[i].firstChild != null) {
+            text += "; <b>nodeValue:</b> " + traverse[i].firstChild.nodeValue;
+        }
+        text += '</li>';
+     }
+     text += "</ol>" + "Parent node: " + root.parentNode.nodeName;
+     document.querySelector('#result').innerHTML = text;
+   } else {
+     alert("No child nodes available!!!");
+   }
+  ```
+ <img src="images/DOM-Interface25.png" width="500">
+
+After checking if the root node with the `class` of the value `article-01` could be found at all, passes on success to the variable `traverse` a list with the child node `root.ChildNodes`. The first information put into the string `text` is the number of elements found and the name of the root node. In the `for` loop all nodes are traversed and the information of each node is appended to the string `text`.
+
+Checking a `traverse[i].firstChild` node for not equal to `null` was done because a line break is also considered a text node. If it is not a newline, `traverse[i].firstChild.nodeValue` contains the content of the text node.
+
+When executing the program, we see that a total of seven nodes were found, but on closer inspection there should only be three nodes. The nodes where `nodeName` equals `text` and the value of `nodeType` equals `3` are again line breaks. It is very important to check whether the node is an element node or a text node. In practice you can use `getElementsByTagName` for this, which mostly returns element nodes.
+
+Such line breaks can be completely omitted from the analysis when going through the individual elements:
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_26) --> **Examples/Part_26/...** 
+
+script.js:
+  ```
+   let root = document.querySelector('.article-01');
+   if (root) {
+     let traverse = root.childNodes;
+     let text = "The following element nodes are in " +
+        root.nodeName + " contain:" + "<ul>";
+     for (let i = 0; i < traverse.length; i++) {
+        if (traverse[i].firstChild != null) {
+            text += "<li>" + "<b>Node name</b>: " + traverse[i].nodeName + "; " +
+                "<b>Content</b>: " + traverse[i].firstChild.nodeValue + "</li>";
+        }
+     }
+     text += "</ul>" + "Parent node: " + root.parentNode.nodeName;
+     document.querySelector('#result').innerHTML = text;
+   } else {
+     alert("No child nodes available!!!");
+   }
+  ```
+ <img src="images/DOM-Interface26.png" width="500">
+
+
+
 
 
 
