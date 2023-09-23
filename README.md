@@ -1269,10 +1269,31 @@ script.js:
      document.querySelector('.article-01').appendChild(p_new);
    }
   ```
- <img src="images/DOM-Interface24a.PNG" width="400">  <img src="images/DOM-Interface24b.PNG" width="400">
+ <img src="images/DOM-Interface24a.png" width="400">  <img src="images/DOM-Interface24b.png" width="400">
 
 
 ### Control HTML elements even more specifically in the DOM tree
+To navigate through the DOM tree, several properties are available:
+
+| Property          | Description |
+|------------------ | -------------------------------------- |
+| `parentNode` 		  | Returns the parent node. This access is useful when an element can be found uniquely, but not the parent element set. |	
+| `childNodes[n]` 	| Returns an array with all child nodes. |
+| `firstChild` 		  | Returns the first child node.          |
+| `lastChild` 		  | Returns the last child node.           |
+| `nextSibling` 	  | Returns the next node on the same level, i.e. the sibling node. |
+| `previousSibling` | Returns the preceding node on the same level (sibling node).    |
+
+With these properties a little navigation in the DOM tree is possible, but it is still not completely reliable with it, since e.g. also line breaks can be read as new nodes and practically seen as text element within a HTML element, one does not get around a check of the nodes. For this purpose there are further properties with which the individual nodes can be analyzed.
+
+| Property          | Description |
+|------------------ | -------------------------------------- |
+| `nodeType` 		    | This returns the type of the node and is probably one of the most important analysis functions when navigating and manipulating the DOM tree due to different DOM implementations of web browsers. A numeric code from `1` to `12` is returned, of which the values `1` and `3` are most commonly needed. `1` is returned for an element node and `3` for a text node. The DOM API also defines constants for the values which can be used instead: 1: ELEMENT_NODE, 2: ATTRIBUTE_NODE, 3: TEXT_NODE, 4: CDATA_SECTION_NODE, 7: PROCESSING_INSTRUCTION_NODE, 8: COMMENT_NODE, 9: DOCUMENT_NODE, 10: DOCUMENT_TYPE_NODE, 11: DOCUMENT_FRAGMENT_NODE (5, 6 ,12 are deprecated) |	
+| `nodeName` 		    | This returns the name of the node as a string. For an HTML element this is a tag name, for an attribute it is the attribute name. For the text node simply `#text` is returned and for the document node `#document`. |
+| `nodeValue` 		  | Returns the content (`innerHTML`) of a text node or the value of the attribute node. If, on the other hand, the node is an HTML element, the value is `undefined`.                                                  |
+| `hasChildNodes` 	| This checks whether a node has further child nodes (=`true`) or not (=`false`).   |
+
+In this example, a node is searched for and the individual elements in it are traversed and their properties are output:
 
 
 
