@@ -1662,7 +1662,7 @@ All elements between the `<template>` tag are not displayed and are not part of 
 
 Here the `template` element of a table row with three columns is still inactive and nothing is displayed yet.
 
- <img src="images/DOM-Interface32a.png" width="400">
+ <img src="images/DOM-Interface32a.png" width="600">
 
 To use this template now, it must be cloned and added to the DOM:
 
@@ -1696,7 +1696,7 @@ To use this template now, it must be cloned and added to the DOM:
 
 The data for the rows in the table comes here from the array `data` with five rows and three columns. Then `querySelector()` selects the template with the ID `template-row`, and all `td` elements are inserted into `td`. With `data.forEach()` the data in `data` are processed row by row and inserted column by column as child element in the `tbody` element.
 
- <img src="images/DOM-Interface32b.png" width="400">
+ <img src="images/DOM-Interface32b.png" width="600">
 
 
 ## 13. HTML forms and JavaScript
