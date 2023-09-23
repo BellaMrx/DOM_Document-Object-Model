@@ -1528,6 +1528,97 @@ script.js:
 Here the complete node `article-01` was cloned, with all child nodes contained in it. Before the node can be mounted somewhere else, the `setAttribute()` method was used to change the `class` to `article-02`, because otherwise there would be two elements with `class="article-01"` (not wrong but not necessarily desired).
 
 
+### Different methods to manipulate the HTML attributes
+With the method `setAttribute()` it is possible to change the attributes of the nodes. There are other methods to change the attributes, but `setAttribute()` and `getAttribute()` are probably the most used:
+
+| Method                      | Description                            |
+|---------------------------- | -------------------------------------- |
+| `getAttribute(name)`        | Returns a string with the value of the `name` attribute. If no attribute exists, `null` is returned. |	
+| `setAttribute(name, value)` | This sets the attribute `name` to the value `value`. If an attribute with `name` already exists in an element, the value is changed to `value`. If the attribute does not exist yet, it will be created. |
+| `removeAttribute(name)`     | Removes the `name` attribute from an element.  |
+| `hasAttribute(name)`        | This checks whether an element node contains the `name` attribute. |
+
+Example:
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_31) --> **Examples/Part_31/...** 
+
+index.html:
+  ```
+    <article id="article-01" class="default">
+        <h1>Article 1: Manipulate attributes</h1>
+        <p>First paragraph text</p>
+        <p>Second paragraph text</p>
+    </article>
+    <article id="article-02">
+        <h1>Article 2: Manipulate attributes</h1>
+        <p>First paragraph text</p>
+        <p>Second paragraph text</p>
+    </article>
+    <button id="set">Set attribute</button>
+    <button id="copy">Copy attribute</button>
+    <button id="remove">Delete attribute</button>
+    <script src="script.js"></script>
+  ```
+
+style.css:
+  ```
+   .demo {
+     background: green;
+     color: white;
+     padding: 1em;
+     margin-bottom: 1em;
+     border: 2px solid silver;
+   }
+
+   .default {
+     border: 1px solid green;
+     background: lightgreen;
+     padding: 1em;
+     margin-bottom: 1em;
+   }
+  ```
+
+script.js:
+  ```
+   document.querySelector('#set').onclick = function() {
+     let root = document.querySelector('#article-01');
+     if (root) {
+        root.setAttribute("class", "demo");
+     }
+   }
+
+   document.querySelector('#copy').onclick = function() {
+     let root1 = document.querySelector('#article-01');
+     if (root1) {
+        let art01_style = root1.getAttribute("class");
+        if (art01_style != null) {
+            let root2 = document.querySelector('#article-02');
+            if (root2) {
+                root2.setAttribute("class", art01_style);
+            }
+        }
+     }
+   }
+
+   document.querySelector('#remove').onclick = function() {
+     let root1 = document.querySelector('#article-01');
+     if (root1) {
+        root1.removeAttribute("class");
+     }
+     let root2 = document.querySelector('#article-02');
+     if (root2) {
+        root2.removeAttribute("class");
+     }
+   }
+  ```
+ <img src="images/DOM-Interface31a.png" width="400">  <img src="images/DOM-Interface31b.png" width="400">
+
+Three event handler functions have been written here, all of which are executed when the button is clicked. The first function sets the class of an item using the `setAttribute()` method and the `class` attribute to the value `demo`, resulting in `class="demo"`, overwriting the default value `class="default"`. 
+
+The second function gets the value of the `class` attribute using the `getAttribute()` method of the first article and sets this value also for the second article with `setAttribute()`. The last function deletes the `class` attribute for the first and the second article with the `removeAttribute()` method.
+
+
+### The `<template>` HTML tag
 
 
 
@@ -1544,4 +1635,4 @@ Here the complete node `article-01` was cloned, with all child nodes contained i
 
 
 
-
+ 
