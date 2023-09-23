@@ -1241,6 +1241,39 @@ The manipulation via `innerHTML` has the disadvantage that an element must be pr
 
 
 ### Create and add HTML elements and content
+A new node or HTML element can be created with the `createElement()` method. The text content can be created with the method `createTextNode()`. A node created in this way is initially not connected to the HTML document. The created node must be explicitly added to the DOM tree with `appendChild()`.
+
+Example:
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_24) --> **Examples/Part_24/...** 
+
+index.html:
+  ```
+   <body>
+     <article class="article-01">
+        <h1>Add node</h1>
+        <p>First paragraph text</p>
+        <p>Second paragraph text</p>
+     </article>
+     <button id="new-p">New paragraph</button>
+     <script src="scripts/script.js"></script>
+   </body>
+  ```
+
+script.js:
+  ```
+   document.querySelector('#new-p').onclick = function() {
+     let p_new = document.createElement("p"); // Creates new node <p>...</p>
+     let t_new = document.createTextNode("A new paragraph"); // Creates the text content "A new paragraph"
+     p_new.appendChild(t_new); // Created node is included in the DOM tree <p>A new paragraph</p>
+
+     document.querySelector('.article-01').appendChild(p_new);
+   }
+  ```
+ <img src="images/DOM-Interface24a.PNG" width="400">  <img src="images/DOM-Interface24b.PNG" width="400">
+
+
+### Control HTML elements even more specifically in the DOM tree
+
 
 
 
