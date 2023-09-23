@@ -18,6 +18,7 @@
  10. Prevent default action of events
  11. The event flow (*event propagation*)
  12. Add, change and remove HTML elements
+ 13. HTML forms and JavaScript
 
 ---------------------------------------------
 
@@ -1619,8 +1620,86 @@ The second function gets the value of the `class` attribute using the `getAttrib
 
 
 ### The `<template>` HTML tag
+For repeated repetitions on a website, such as lines of a table, list elements or images, templates are often used. The processing of templates was mostly done on the server side. Since JavaScript has no template system, differently in the PHP Progrmmierung, one must create here often quite complex with `createElement()` HTML elements and assemble. The HTML element `template` is a solution to this problem:
+
+  ```
+   <template id="template-row">
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+     </tr>
+   </template>
+  ```
+
+All elements between the `<template>` tag are not displayed and are not part of the HTML document. This element can also not be accessed by `document.getElementById()`. The content of the `<template>` tag is not used until the fragment is added to the DOM:
+
+  ```
+    ...
+    <h1>Appointment overview</h1>
+    <table id="mytable">
+        <thead>
+            <tr>
+                <td>Time</td>
+                <td>Day</td>
+                <td>Appointment</td>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- The rows are added here -->
+        </tbody>
+    </table>
+    <!-- Rows template -->
+    <template id="template-row">
+        <tr>    
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+    ...
+  ```
+
+Here the `template` element of a table row with three columns is still inactive and nothing is displayed yet.
+
+ <img src="images/DOM-Interface32a.png" width="400">
+
+To use this template now, it must be cloned and added to the DOM:
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_32) --> **Examples/Part_32/...**
+
+  ```
+    <script>
+        let data = [
+            ['12:00', 'Monday', 'JS course in Frankfurt'],
+            ['19:00', 'Monday', 'Sports'],
+            ['09:00', 'Tuesday', 'Meeting with client'],
+            ['12:00', 'Tuesday', 'Lunch with staff'],
+            ['15:00', 'Wednesday', 'Teammeeting']
+        ];
+
+        let t = document.querySelector('#template-row');
+        td = t.content.querySelectorAll('td');
+
+        data.forEach(function(dataRow) {
+            td[0].textContent = dataRow[0];
+            td[1].textContent = dataRow[1];
+            td[2].textContent = dataRow[2];
+
+            let tb = document.querySelector('tbody');
+            let clone = document.importNode(t.content, true);
+            tb.appendChild(clone);
+
+        });
+    </script>
+  ```
+
+The data for the rows in the table comes here from the array `data` with five rows and three columns. Then `querySelector()` selects the template with the ID `template-row`, and all `td` elements are inserted into `td`. With `data.forEach()` the data in `data` are processed row by row and inserted column by column as child element in the `tbody` element.
+
+ <img src="images/DOM-Interface32b.png" width="400">
 
 
+## 13. HTML forms and JavaScript
 
 
 

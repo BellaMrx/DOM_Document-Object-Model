@@ -1,0 +1,27 @@
+body { 
+    font: 1.1em/120% Georgia, Times, serif;
+  }   
+  table {
+    width: 90%;
+  } 
+  thead {
+     background: black;
+     color: white;
+  }
+  th {
+    padding: 0.5em;
+    text-transform: uppercase;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: left;
+  }
+  tr:nth-child(even) { background: lightgray; }
+  td:nth-child(1) {
+    font-weight: bold;
+    width: 100px;
+  }
+  td { padding: 0.5em; }
+  tr:hover {
+    background: darkgreen;
+    color: white;
+  }
