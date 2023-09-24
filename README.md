@@ -1163,7 +1163,7 @@ script.js:
      alert("Mouse button pressed in article!");
    }
   ```
- <img src="images/DOM-Interface21.PNG" width="400">
+ <img src="images/DOM-Interface21.PNG" width="500">
 
 Here two nested elements (`p` and `article`), monitor the same `mousedown` event. When the `p` element is clicked inside the `article` element, the handler function `getMoueP()` is run. Because of *bubbling* the event rises to the top and, when reaching the `article` element, executes the `getMouseArticle()` handler function registered for the same `mousedown` event there as well.
 
@@ -1931,8 +1931,11 @@ If you don't know HTML, CSS or JavaScript yet, have a look here:
   - [Sass and SCSS Basic Guide](https://github.com/BellaMrx/Sass_and_SCSS) - An introduction to the CSS preprocessor Sass
 
   **JavaScript Basics:**
+
     1. [JS Introduction](https://github.com/BellaMrx/JS_introduction) - An introduction to JavaScript, templates and descriptions
+
     2. [Arrays, functions, objects in JS](https://github.com/BellaMrx/Arrays_functions_objects_in_JS) - Introduction: Arrays, functions and objects in JavaScript
+    
     3. [DOM - Document Object Model](https://github.com/BellaMrx/DOM_Document-Object-Model) -  Introduction to the **DOM** and the **DOM** manipulation - Change web pages dynamically
 
 Or just visit my GitHub profile, you can find all guides/tutorials there [BellaMrx](https://github.com/BellaMrx)
