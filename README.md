@@ -1700,8 +1700,79 @@ The data for the rows in the table comes here from the array `data` with five ro
 
 
 ## 13. HTML forms and JavaScript
+The evaluation of form elements with JavaScript is quite simple. If a certain event occurs, it can be reacted to accordingly. In the case of a single-line input field, it is possible to react accordingly when the field loses focus and the user moves to the next field. This only requires an event handler to react to 'onblur'. With selection lists, reading only makes sense if they have been changed, which is why an event handler can be used to react to `onchange` here (as with multi-line text fields). Radio buttons and checkboxes are usually grouped, which is why an event handler can be used to react to a `click` (`onclick`) and then check all elements belonging to the group.
 
 
+### Reading text input fields with JavaScript
+The value of a text input field like `<input type="text">` can be determined directly via the `value` attribute. To react on changes, an event handler for the JavaScript event `onblur` is useful, which is executed when the input field loses focus, which happens when the user clicks on another input field. This is the moment to check the text input field with JavaScript:
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_33) --> **Examples/Part_33/...** 
+
+index.html:
+  ```
+    <h1>Reading text input fields with JavaScript</h1>
+    <form>
+        <label>Name</label>
+        <input type="text" placeholder="Your name" id="name">
+        <input type="submit">
+    </form>
+    <p></p>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   document.querySelector('#name').onblur = function() {
+     var txt = "<b>Your input:</b> " + this.value;
+     /* Check stored value of the text field in txt */
+     document.querySelector('p').innerHTML = txt;
+   };
+  ```
+
+ <img src="images/DOM-Interface33.png" width="400">
+
+In this example, if text is entered into the input field and the *Tab* key or outside the text input field is clicked, the entered text is output below it. In practice, a check is performed at this point or further processes the input made instead of simply outputting the text here.
+
+
+### Read selection lists with JavaScript
+Also for `select` dropdown lists, the value of the `option` element is obtained via the `value` HTML attribute. By default, the text between `<option>` and `</option>` or that of the `value` attribute in the opening `<option>` tag is returned if it was used instead. Here it makes sense to react to the `onchange` JavaScript event, which reacts when the `select` select list is changed.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_34) --> **Examples/Part_34/...** 
+
+index.html:
+  ```
+    <h1>Read in selection lists</h1>
+    <form>
+        <label>Your choice</label>
+        <select id="chapter">
+            <option value> ... Select a chapter ... </option>
+            <option>HTML5 - Introduction</option>
+            <option value="Page 100">CSS3 - Introduction</option>
+            <option value="Page 200">JavaScript - Introduction</option>
+        </select>
+    </form>
+    <p></p>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   document.querySelector('#chapter').onchange = function() {
+     var txt = "<b>Your choice:</b> " + this.value;
+     // Check stored value of the text field in txt 
+     document.querySelector('p').innerHTML = txt;
+   };
+  ```
+  
+ <img src="images/DOM-Interface34.png" width="400">
+
+In this example, as soon as the value of the select list is changed (`onchange`), the new value placed between `<option>` and `</option>`, or if specified, the value of the `value` attribute in the opening `<option>` tag is printed below it in the `p` element.
+
+#### `onchange` in `<textarea>`
+`onchange` is usually also used for multiline text between `<textarea>` and `</textarea>` to check if the content has been changed once the `textarea` element has lost focus.
+
+
+### Reading radio buttons and checkboxes with JavaScript
 
 
 
