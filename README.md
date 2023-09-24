@@ -1773,6 +1773,157 @@ In this example, as soon as the value of the select list is changed (`onchange`)
 
 
 ### Reading radio buttons and checkboxes with JavaScript
+The reading of values of a radio button `type="radio"` and a checkbox `type="checkbox"` must be evaluated with the JavaScript event `onclick`. Here, for each input field of a group with radio buttons or a group with checkboxes, it must be checked whether it was selected with a `click` event.
+
+A related group of radio buttons or checkboxes usually has a common `name` attribute and can also be addressed in a group with JavaScript.
+
+Opposite to radio buttons, checkboxes can have more than one field selected, so JavaScript and the `checked` property must be used to check if a field in the group is active or checked.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_35) --> **Examples/Part_35/...** 
+
+index.html:
+  ```
+    <h1>Read radio buttons and checkboxes</h1>
+    <form>
+        <p>Please select a room:</p>
+        <p>
+            <input type="radio" name="room" value="budget">Budget<br>
+            <input type="radio" name="room" value="standard" checked>Standard<br>
+            <input type="radio" name="room" value="deluxe">Deluxe
+        </p>
+        <p id="printRoom"></p>
+        <p>
+            <input type="checkbox" name="extra" id="c1" value="breakfast">
+            <label for="c1">Breakfast</label><br>
+            <input type="checkbox" name="extra" id="c2" value="lunch">
+            <label for="c2">Lunch</label><br>
+            <input type="checkbox" name="extra" id="c3" value="dinner">
+            <label for="c3">Dinner</label>
+        </p>
+        <p class="output"></p>
+    </form>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   // Evaluate radio buttons
+   let roomtyp = document.querySelectorAll('input[name="room"]');
+   for (let i = 0; i < roomtyp.length; i++) {
+     roomtyp[i].onclick = function() {
+        let txt = "<b>Selected for room : </b>" + this.value;
+        document.querySelector('.output').innerHTML = txt;
+     }
+   }
+
+   // Evaluate checkboxes
+   let formPack = document.querySelectorAll('input[name="extra"]');
+   for (let i = 0; i < formPack.length; i++) {
+     formPack[i].onclick = function() {
+        let msg = "<b>Selected is : </b>";
+        for (let j = 0; j < formPack.length; j++) {
+            if (formPack[j].checked)
+                msg += formPack[j].value + " ";
+        }
+        document.querySelector('.output').innerHTML = msg;
+     }
+   }
+  ```
+  
+ <img src="images/DOM-Interface35.png" width="400">
+
+
+### Catch buttons with JavaScript
+If the user is to be prevented from transmitting the entered form data in the web browser to the server by clicking on a button, an event listener can be used to react to the `submit` event and another script can be executed.
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_36) --> **Examples/Part_36/...** 
+
+index.html:
+  ```
+    <h1>Catch buttons</h1>
+    <form>
+        Text01 <input type="text" id="t1">
+        <label for="t1"></label><br> Text02 <input type="email" id="t2">
+        <label for="t2"></label><br> Text03 <input type="date" id="t3">
+        <label for="t3"></label><br><br>
+        <input type="submit"><input type="reset">
+    </form>
+    <p></p>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   document.querySelector('form').addEventListener(
+     'submit', checkInput);
+   document.querySelector('form').addEventListener(
+     'reset', checkReset);
+
+   function checkInput() {
+     var x = confirm("Do you really want to send the data?")
+     if (x) {
+        /* Send data */
+     } else {
+        /* Do not send */
+        event.preventDefault();
+     }
+   }
+
+   function checkReset(event) {
+     var x = confirm("Do you want to reset the fields?")
+     if (x) {
+        /* Reset */
+        document.querySelector('p').innerHTML = "Fields reset";
+     } else {
+        /* Do not reset */
+        event.preventDefault();
+        document.querySelector('p').innerHTML = "Reset canceled";
+     }
+   }
+  ```
+  
+ <img src="images/DOM-Interface36.PNG" width="400">
+
+
+### Control the progress indicator `<progress>` with JavaScript
+This element is good for showing the progress of form element input:
+
+  [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_37) --> **Examples/Part_37/...** 
+
+index.html:
+  ```
+    <h1>Progress bar</h1>
+    <form onchange="progress()">
+        Text01 <input type="text" id="t1"><br> Text02 <input type="email" id="t2"><br> Text03 <input type="date" id="t3"><br><br>
+        <input type="submit"><input type="reset">
+    </form>
+    <p>Progress: <progress id="bar" value="0" max="3">Progress</progress></p>
+    <script src="scripts/script.js"></script>
+  ```
+
+script.js:
+  ```
+   function progress() {
+     let fields = 0;
+     for (let i = 0; i < document.forms[0].elements.length; i++) {
+        if (document.forms[0].elements[i].value != '')
+        fields++;
+     }
+     document.querySelector('#bar').value = fields;
+     document.querySelector('#bar').innerHTML = "Progress (" + fields + " from 3): ";
+   }
+  ```
+  
+ <img src="images/DOM-Interface37.png" width="400">
+
+
+This example checks every change in the form `onchange` and then calls the handler function `progress()`. There the individual elements are traversed, and for each element it is checked whether the content `value` is not an empty string. In the example, no empty string means that this text field has already been filled in, and therefore the count variable `fields` is incremented for each filled text field. This value is used at the end in the progress bar for `value` of the `progress` element, where the maximum value has been set to `3`.
+
+
+------------------------------------------------------------------------------------------------
+# This is the end my friend ;)
+
+
 
 
 
