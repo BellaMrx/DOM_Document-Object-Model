@@ -1,6 +1,6 @@
 # DOM_Document-Object-Model
  
- Introduction to the **DOM** and the **DOM** manipulation - Change web pages dynamically
+ Introduction to the **DOM** and the **DOM** manipulation - Change web pages dynamically with JavaScript
 
 ---------------------------------------------
 
