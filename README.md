@@ -1892,13 +1892,15 @@ This element is good for showing the progress of form element input:
 
 index.html:
   ```
-    <h1>Progress bar</h1>
-    <form onchange="progress()">
-        Text01 <input type="text" id="t1"><br> Text02 <input type="email" id="t2"><br> Text03 <input type="date" id="t3"><br><br>
-        <input type="submit"><input type="reset">
-    </form>
-    <p>Progress: <progress id="bar" value="0" max="3">Progress</progress></p>
-    <script src="scripts/script.js"></script>
+   <h1>Progress bar</h1>
+   <form onchange="progress()">
+     Text01 <input type="text" id="t1"><br> 
+     Text02 <input type="email" id="t2"><br> 
+     Text03 <input type="date" id="t3"><br><br>
+     <input type="submit"><input type="reset">
+   </form>
+   <p>Progress: <progress id="bar" value="0" max="3">Progress</progress></p>
+   <script src="scripts/script.js"></script>
   ```
 
 script.js:
