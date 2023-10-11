@@ -955,7 +955,7 @@ If a mobile-only application needs to be written, it makes sense to replace the 
 | JavaScript Events | The event occurs when ...                   			                                           |
 |-------------------| -------------------------------------------------------------------------------------------- |
 | `touchstart`      | ... the surface of the touchscreen is touched. Corresponds to a `mousedown`                  |
-| `touchend`        | ... when the finger is lifted from the touchscreen surface. Corresponds to a `mouseup        |
+| `touchend`        | ... when the finger is lifted from the touchscreen surface. Corresponds to a `mouseup`        |
 | `touchcancel`     | ... when the finger leaves the area                                                          |
 | `touchmove`       | ... when the finger is slid over the surface of the touchscreen. Equivalent to a `mousemove` |
 
