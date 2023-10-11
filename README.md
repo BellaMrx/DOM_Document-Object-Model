@@ -1227,7 +1227,7 @@ script.js:
    }
   ```
 
-This way, non-ascending events can already be processed at an ancestor element. Furthermore, if the `stopPropagation` method of the 'event' object is already called in the *capturing phase*, the *target* and *bubbling phases* will not be executed at all, and the event type will thus not reach its target element.
+This way, non-ascending events can already be processed at an ancestor element. Furthermore, if the `stopPropagation` method of the `event` object is already called in the *capturing phase*, the *target* and *bubbling phases* will not be executed at all, and the event type will thus not reach its target element.
 
 If non-ascending event types like `load`, `focus`, `blur`, `mouseenter`, `mouseleave` or `submit` are triggered, intervening in the *capturing phase* via `addEventListener("event-type", handler, true)`, can monitor such types at a central position and thus process the higher-level elements already on descent. In contrast to the *bubbling phase*, each event has a *capturing phase*. If an event handler was registered with `addEventListener()` for the *capturing phase* and this handler was called in the phase, it cannot be called again in the *bubbling phase*. Registration can only be done for the *capturing phase* or the *bubbling phase*, both are not possible.
 
@@ -1341,6 +1341,7 @@ Checking a `traverse[i].firstChild` node for not equal to `null` was done becaus
 When executing the program, we see that a total of seven nodes were found, but on closer inspection there should only be three nodes. The nodes where `nodeName` equals `text` and the value of `nodeType` equals `3` are again line breaks. It is very important to check whether the node is an element node or a text node. In practice you can use `getElementsByTagName` for this, which mostly returns element nodes.
 
 Such line breaks can be completely omitted from the analysis when going through the individual elements:
+
   [Complete Code](https://github.com/BellaMrx/DOM_Document-Object-Model/tree/main/Examples/Part_26) --> **Examples/Part_26/...** 
 
 script.js:
